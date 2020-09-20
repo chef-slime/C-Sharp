@@ -1,0 +1,115 @@
+//1/ Write a program in C# Sharp to find the sum of all elements of the list int
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+        List<int> list1 = new List<int>();
+        list1.Add(1);
+        list1.Add(2);
+        list1.Add(5);
+        list1.Add(1);
+        list1.Add(8);
+        Console.Write("Given ");
+        Console.WriteLine(String.Join(", ", list1));
+        Console.WriteLine("Sum of all elements = {0}", list1.Sum());
+
+        int sum = 0;
+        for (int i = 0; i < list1.Count; i++)
+        {
+            sum = sum + list1[i];
+        }
+
+        Console.WriteLine(sum);
+    }
+}
+
+//// 2/ Write a program in C# Sharp to count an elements appears/occurs in an list.
+//// Example: Given { 1, 2 ,5, 1 , 8 }
+//// > Which number you are looking for?
+//// 1
+//// > 1 appear 2 times
+
+using System;
+using System.Collections.Generic;
+
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+        int numberOfAppears = 0;
+        List<int> givenIntList = new List<int>
+        {
+            1,
+            2,
+            5,
+            1,
+            8
+        };
+
+        Console.Write("Given ");
+        Console.WriteLine(String.Join(", ", givenIntList));
+        Console.WriteLine("Which number you are looking for?");
+        int input = Int32.Parse(Console.ReadLine());
+        for (int i = 0; i < givenIntList.Count; i++)
+        {
+            if (givenIntList[i] == input)
+                numberOfAppears++;
+        }
+
+        if (numberOfAppears > 1)
+            Console.WriteLine("{0} appears {1} times", input, numberOfAppears);
+        else
+            Console.WriteLine("{0} appears {1} time", input, numberOfAppears);
+
+    }
+}
+
+// 3/ Write a program in C# to find the largest and smallest element in an list
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+        List<int> givenList = new List<int>
+        {
+            1,
+            2,
+            5,
+            1,
+            8,
+            10,
+            9
+        };
+        Console.Write("Given ");
+        Console.WriteLine(String.Join(", ", givenList));
+        Console.WriteLine("Smallest element: {0}", givenList.Min()); // Built-in function
+        Console.WriteLine("Largest element: {0}", givenList.Max());
+
+
+        int min = int.MaxValue; // 99999999999999999999
+        int max = int.MinValue; // -9999999999999999999
+        for (int i = 0; i < givenList.Count; i++)
+        {
+            if (givenList[i] > max)
+            {
+                max = givenList[i];
+            }
+
+            if (givenList[i] < min)
+            {
+                min = givenList[i];
+            }
+        }
+
+        Console.WriteLine(max);
+        Console.WriteLine(min);
+    }
+}
