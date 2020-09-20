@@ -1,0 +1,121 @@
+1/ Given a list, make a reverse list of it.
+Example: 
+Input: 	{ 1, 4 , 6, 7 }
+Output: { 7, 6, 4, 1 }  
+
+
+using System;
+using System.Collections.Generic;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int [] array = new int[]{1, 4, 6, 7};
+    for (int i = 0; i<4; i++)
+      Console.Write ("{0} ", array[i]);
+    Console.WriteLine();
+    for (int j = 3; j>-1; j--)
+      Console.Write("{0} ", array[j]);
+  }
+}
+
+2/ Filter odd number and even number to separate list
+Example:
+Input: 	{ 4, 6, 7, 9 }
+Output:	{ 4, 6 }
+	{ 7, 9 }
+
+using System;
+using System.Collections.Generic;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int [] array = new int[]{4, 7, 9, 6};
+    int[] even = new int[4];
+    int[] odd = new int[4];
+    int j = 0;
+    int n = 0;
+    Console.Write("Given array elements: ");
+
+    for (int i = 0; i<4; i++)
+    {
+      if (array[i]%2==0)
+        {even [j] = array[i];
+        j++;
+        }
+      else
+        {odd[n] = array[i];
+        n++;
+        }
+      Console.Write("{0} ", array[i]);
+    }
+    Console.WriteLine("\nEven elements: ");
+    for (int i = 0; i<2; i++)
+      Console.Write ("{0} ", even[i]);
+    Console.WriteLine("\nOdd elements: ");
+    for (int i = 0; i<2; i++)
+      Console.Write ("{0} ", odd[i]);
+  }
+}
+
+
+3/ Remove the number divided by 2 and 5 from the given list
+Example:
+Input:	{ 5, 7, 6, 10, 20 }
+Output:	{ 5, 7, 6 }
+
+using System;
+using System.Collections.Generic;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int [] array = new int[]{5, 7, 6, 10, 20};
+    int[] keptElements = new int[5];
+    int j = 0;
+    Console.Write("Given array: ");
+
+    for (int i = 0; i<5; i++)
+    {
+      if (array[i]%2!=0 | array[i]%5!=0)
+        {keptElements[j] = array[i];
+        j++;
+        }
+      Console.Write ("{0} ", array[i]);
+
+    }
+    Console.Write("\nFinal Array: ");
+    for (int i = 0; i<3; i++)
+      Console.Write ("{0} ", keptElements[i]);
+  }
+}
+
+
+4/ Given a list of student name, write a search by name function
+Example:
+Student names:	{ "Nani", "Tina", "Adam" }
+Search name:	"na"
+Output: { "Nani", "Tina" }
+
+Hints: use String.Contains function
+
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    string [] array = new string[]{"Nani", "Tina", "Adam"};
+    string [] keptElements = new string[2];
+    int j = 0;
+    Console.WriteLine("Search name: ");
+    string input = Console.ReadLine();
+    for (int i = 0; i<3; i++)
+    {
+      if (array[i].Contains(input, StringComparison.OrdinalIgnoreCase))
+        {keptElements[j] = array[i];
+        j++;
+        }
+    }
+    for (int i = 0; i<2; i++)
+      Console.WriteLine("\n{0}", keptElements[i]);
+
+
+  }
+}

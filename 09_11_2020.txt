@@ -1,0 +1,89 @@
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        int[] myIntArr = new int[] { 123, 456, 789 } ;
+        // int[] myIntArr = new int[2];
+        // myIntArr[0] = 123;
+        // myIntArr[0] = 789;
+        //System.Console.WriteLine(myIntArr[0]);
+        //System.Console.WriteLine(myIntArr[1]);
+        //System.Console.WriteLine(myIntArr[2]);
+
+        // myIntArr.Length  will give 3
+        for (int i = 0; i < myIntArr.Length; i++)
+        {
+            System.Console.WriteLine(myIntArr[i]);
+        }
+    }
+}
+
+
+//int index = 5;
+
+//do
+//{
+//    System.Console.WriteLine("Hello " + index);
+//    index--;
+
+//} while (index > 0);
+
+//for (int i = index; i > 0 ; i--)
+//{
+//    System.Console.WriteLine("Hello " + i);
+//}
+
+//while (index > 0)
+//{
+//    index--;
+//    System.Console.WriteLine("Hello " + index);
+//}
+
+HOMEWORK
+1/ Ask a user enter an integer and print out the star rectangle
+
+using System;
+//System.Text is a namespace necessary for StringBuilder
+using System.Text;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Enter a number: ");
+    int input = int.Parse(Console.ReadLine());
+    for (int i = 0; i < input ; i++)
+      {//Create a new object of the StringBuilder class
+       /*StringBuilder is an object that expands memory to accomodate
+      a modified string. If a StringBuilder doesn't contain a string, it will add it.*/
+      /*Insert method will return a new string in which a specified string is inserted at a specified index position*/
+      /*0 is the first index specified because we always want at least 1 star.*/
+      /*Ending index of i+1 is for more stars to be added after the initial star and on the same line*/
+      //ToString() method is used to return the string, which will be assigned to variable "star"
+        string star = new StringBuilder().Insert(0, "*",i+1).ToString();
+        Console.WriteLine(star);
+      }
+  }
+}
+
+2/ Print out multiplication table
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+  for (int i = 0; i <= 10; i++)
+    {
+    //"\t" creates a tab  
+    Console.Write(i + "\t");
+    for (int j = 1; j <= 10; j++)
+      {
+        if (i>0) 
+	  //Console.Write() prints text without adding a new line upon completion
+          Console.Write(i * j + "\t");
+	// When i==0, we only need to print the number to create initial row of numbers without any multiplication
+        else 
+          Console.Write(j + "\t");
+      }
+    Console.Write("\n");
+    }
+  }
+}

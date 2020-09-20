@@ -1,0 +1,39 @@
+using System;
+class MainClass {
+  public static void Main (string[] args) {
+    string condition = null;
+    while (condition !="CE")
+    {
+      Console.WriteLine("Enter 1st Number: ");
+      condition = Console.ReadLine();
+      if (condition == "CE")
+        Console.WriteLine("\nGoodbye");  
+      else
+      {
+        int firstNo = Int32.Parse(condition);
+        Console.WriteLine("Enter 2nd Number: ");
+        int secondNo = int.Parse(Console.ReadLine());
+        Console.WriteLine("Which Operation: ");
+        string inputOperator = Console.ReadLine();
+        switch (inputOperator)
+        {
+          case "+":
+            Console.WriteLine($"{firstNo}+{secondNo}={firstNo + secondNo}");
+            break;
+          case "-":
+            Console.WriteLine($"{firstNo}+{secondNo}={firstNo - secondNo}");
+            break;
+          case "*":
+            Console.WriteLine($"{firstNo}*{secondNo}={firstNo*secondNo}");
+            break;
+          case "/":
+            Console.WriteLine($"{firstNo}/{secondNo}={firstNo / secondNo}");
+            break;
+          case "%":
+            Console.WriteLine($"{firstNo}%{secondNo}={firstNo % secondNo}");
+            break;
+      }
+    }
+   }
+  }
+}

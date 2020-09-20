@@ -1,0 +1,74 @@
+ 1/ Write a program in C# Sharp to find the sum of all elements of the list int
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+  public static void Main (string[] args) {
+    List<int> list1 = new List<int>();
+    list1.Add (1);
+    list1.Add (2);
+    list1.Add (5);
+    list1.Add (1);
+    list1.Add (8);
+    Console.Write ("Given ");
+    Console.WriteLine (String.Join(", ", list1));
+    Console.WriteLine("Sum of all elements = {0}", list1.Sum());
+
+  }
+}
+
+ 2/ Write a program in C# Sharp to count an elements appears/occurs in an list.
+ Example: Given { 1, 2 ,5, 1 , 8 }
+ > Which number you are looking for?
+ 1
+ > 1 appear 2 times
+
+using System;
+using System.Collections.Generic;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int j = 0;
+    List<int> list1 = new List<int>();
+    list1.Add (1);
+    list1.Add (2);
+    list1.Add (5);
+    list1.Add (1);
+    list1.Add (8);
+    Console.Write ("Given ");
+    Console.WriteLine (String.Join(", ", list1));
+    Console.WriteLine("Which number you are looking for?");
+    int input = Int32.Parse(Console.ReadLine());
+    for (int i = 0; i < list1.Count; i++)
+      {if (list1[i] == input)
+        j++;
+      }
+    if (j == 1)
+      Console.WriteLine("{0} appears 1 time", input, j);
+    else
+      Console.WriteLine("{0} appears {1} times", input, j);
+  }
+}
+ 
+ 3/ Write a program in C# to find the largest and smallest element in an list
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class MainClass {
+  public static void Main (string[] args) {
+    List<int> list1 = new List<int>();
+    list1.Add (1);
+    list1.Add (2);
+    list1.Add (5);
+    list1.Add (1);
+    list1.Add (8);
+    Console.Write ("Given ");
+    Console.WriteLine (String.Join(", ", list1));
+    Console.WriteLine("Smallest element: {0}", list1.Min());
+    Console.WriteLine("Largest element: {0}", list1.Max());
+
+  }
+}

@@ -1,0 +1,32 @@
+using System;
+
+class MainClass {
+  public static void HR()
+  {
+  Console.WriteLine ("What is your full name?");
+
+  string name = Console.ReadLine();
+
+  Console.WriteLine ("\nWhat is your date of birth?");
+  string DOB = Console.ReadLine();
+
+  Console.WriteLine ("\nWhat is your address?");
+  string address = Console.ReadLine();
+        
+  Console.WriteLine ("\nWhat is your phone number?");
+  string phone = Console.ReadLine();
+
+  Console.WriteLine ("\nWelcome {0}\nDOB: {1}\nAddress: {2}\nPhone: {3}", name, DOB, address, phone);
+  }
+  public static void Main (string[] args) 
+  {
+  HR();
+  Console.WriteLine ("\nIs the information correct?");
+  string user_confirmation = Console.ReadLine();
+
+  if (user_confirmation == "Yes" || user_confirmation == "yes")
+    {
+    }
+  else HR();
+  }
+}
