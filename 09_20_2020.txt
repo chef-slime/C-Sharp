@@ -1,13 +1,14 @@
-1/ Build a book dictionary, and ask a user which book they are looking for, the out put will be the price of that book
-Example:
-Dictionary:
-TitleOfTheBook	Price
-Army for you	12
-Harry Potter	51
-UFO				30
+//1/ Build a book dictionary, and ask a user which book they are looking for, the out put will be the price of that book
+//Example:
+//Dictionary:
+//TitleOfTheBook Price
+//Army for you	12
+//Harry Potter    51
+//UFO				30
+//Boston Harry    22
 
-> Which book's title you are looking for?
-army
+//> Which book's title you are looking for?
+//Harry
 
-> Army for you cost $12
-
+//> Boston Harry $22
+//> Harry Potter $12
