@@ -1,0 +1,10 @@
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\bin\Debug\Slime's Calculator.exe.config
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\bin\Debug\Slime's Calculator.exe
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\bin\Debug\Slime's Calculator.pdb
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime's Calculator.csprojAssemblyReference.cache
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime_s_Calculator.slimeCalculator.resources
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime_s_Calculator.Properties.Resources.resources
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime's Calculator.csproj.GenerateResource.cache
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime's Calculator.csproj.CoreCompileInputs.cache
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime's Calculator.exe
+C:\Users\td130\source\repos\Slime's Calculator\Slime's Calculator\obj\Debug\Slime's Calculator.pdb
