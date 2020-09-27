@@ -15,22 +15,26 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-class MainClass {
-  public static void Main (string[] args) {
-    Dictionary <string, double> books = new Dictionary<string, double>()
-    {{"food wars", 8.99},
-      {"harry potter", 6.59},
-      {"v is for vegan", 7.50}
-    };
-    Console.WriteLine("What book are you looking for? ");
-    string input = Console.ReadLine();
-    
-    for (int i = 0; i<books.Count; i++)
-      if (books.ContainsKey(input) || books.ContainsKey(input.Substring(0)))
-        {Console.WriteLine("\n{0} costs ${1}", input, books.ElementAt(i).Value);
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+        Dictionary<string, double> bookDictionary = new Dictionary<string, double>()
+        {
+            {"food wars", 8.99},
+            {"harry potter", 6.59},
+            {"v is for vegan", 7.50},
+            {"on food and cooking", 6.59},
+        };
+        Console.WriteLine("What book are you looking for? ");
+        string input = Console.ReadLine();
+        foreach (KeyValuePair<string, double> keyValue in bookDictionary)
+        {
+            if (keyValue.Key.Contains(input.ToLower()))
+            {
+                Console.WriteLine("\n{0} costs ${1}", keyValue.Key, keyValue.Value);
+            }
         }
-
-  }
+    }
 }
