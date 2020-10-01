@@ -8,5 +8,35 @@
 2/ Create an Employee Class, which you can inital ID, FirstName, LastName, Salary and provide those actions (methods)
 	+ GetMyID
 	+ GetFullname
-	+GetSalary
-	+RaiseSalary
+	+ GetSalary
+	+ RaiseSalary(double raiseAmount)
+
+
+public class Employee
+{
+    private string firstName;
+    private string lastName;
+    private double salary;
+
+    public Employee(string _firstName, string _lastName, double _salary)
+    {
+        firstName = _firstName;
+        lastName = _lastName;
+        salary = _salary;
+    }
+
+    public void InstroduceMyself()
+    {
+        // Print out something?
+    }
+
+    public void RaiseSalary(double raiseAmount)
+    {
+        // Something ??
+    }
+
+    public double GetSalary()
+    {
+        // Something ??
+    }
+}
