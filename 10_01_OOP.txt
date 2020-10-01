@@ -4,39 +4,111 @@
 		if SUV -> 60
 		if Truck -> 40
 		else -> 50
+		
+using System;
+
+public class MainClass
+{
+  public static void Main(string[] args)
+  {
+    Car truck = new Car("white", 40);
+    Console.WriteLine(truck.GetMyColor());
+    truck.Drive();
+    Car SUV = new Car ("red", 60);
+    Console.WriteLine(SUV.GetMyColor());
+    SUV.Drive();
+    Car van = new Car ("black", 50);
+    Console.WriteLine(van.GetMyColor());
+    van.Drive();
+  }
+}
+public class Car 
+{
+  private string color;
+  private int maxspeed; 
+  public Car (string _color, int _maxspeed)
+  {
+    color = _color;
+    maxspeed = _maxspeed;
+  }
+    public virtual void Drive()
+    {
+        Console.WriteLine("I am a Vehicle with max speed of " + maxspeed);
+    }
+    public virtual string GetMyColor()
+    {
+        return color;
+    }
+}
+  public class truck : Car
+  {
+      public truck(string color, int _maxspeed) : base(color, _maxspeed)
+      {
+
+      }
+  }
+  public class SUV : Car
+  {
+      public SUV(string color, int _maxspeed) : base(color, _maxspeed)
+      {
+
+      }
+  }
 
 2/ Create an Employee Class, which you can inital ID, FirstName, LastName, Salary and provide those actions (methods)
-	+ GetMyID
-	+ GetFullname
-	+ GetSalary
-	+ RaiseSalary(double raiseAmount)
-
-
-public class Employee
+	+IntroduceYourself
+	+GetMyID
+	+GetSalary
+	+RaiseSalary
+	
+using System;
+public class MainClass
 {
-    private string firstName;
-    private string lastName;
-    private double salary;
+  public static void Main(string[] args)
+  {
+    Employee Samuel = new Employee (111, "Samuel", "Davis", 96000);
+    Samuel.IntroduceYourself();
+    Console.WriteLine("ID: {0}", Samuel.GetMyID());
+    Console.WriteLine("Salary: {0}", Samuel.GetSalary());
+    Console.WriteLine("Raised Salary: {0}", Samuel.RaiseSalary(5000));
+    
+    Employee Carla = new Employee (222, "Carla", "Moret", 101000);
+    Carla.IntroduceYourself();
+    Console.WriteLine("ID: {0}", Carla.GetMyID());
+    Console.WriteLine("Salary: {0}", Carla.GetSalary());
+    Console.WriteLine("Raised Salary: {0}", Carla.RaiseSalary(5000));
+  }
 
-    public Employee(string _firstName, string _lastName, double _salary)
+}
+public class Employee 
+{
+  private int ID;
+  private string firstname;
+  private string lastname;
+  private double salary;
+  public Employee (int _ID, string _firstname, string _lastname, double _salary)
+  {
+    ID = _ID;
+    firstname = _firstname;
+    lastname = _lastname;
+    salary = _salary;
+
+  }
+    public void IntroduceYourself()
     {
-        firstName = _firstName;
-        lastName = _lastName;
-        salary = _salary;
+      Console.WriteLine("\nMy name is {0} {1}", firstname, lastname);
     }
-
-    public void InstroduceMyself()
+    public int GetMyID()
     {
-        // Print out something?
+      return ID;
     }
-
-    public void RaiseSalary(double raiseAmount)
-    {
-        // Something ??
-    }
-
     public double GetSalary()
     {
-        // Something ??
+      return salary;
     }
+    public double RaiseSalary(double raiseamount)
+    {
+      return salary + raiseamount;  
+    }
+
 }
