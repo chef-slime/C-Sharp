@@ -1,0 +1,12 @@
+1/ Create a Car class, which you can inital (construction) with Color, Type of vehicle (suv, truck) and that Car class can provide (methods)
+	+ GetMyColor
+	+ GetMyMaxSpeed 
+		if SUV -> 60
+		if Truck -> 40
+		else -> 50
+
+2/ Create an Employee Class, which you can inital ID, FirstName, LastName, Salary and provide those actions (methods)
+	+ GetMyID
+	+ GetFullname
+	+GetSalary
+	+RaiseSalary
