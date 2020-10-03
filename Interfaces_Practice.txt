@@ -1,0 +1,25 @@
+1/ An animal interface should have:
+	string GetName() ->. Return the name of the animal
+	int GetVelocity() ->  Return the velocity of that animal
+	void Eat() -> Print the food for that animal
+	
+	Implement a few animal(at least 4) for that interface (you pick), example: 
+	Class Cat : IAnimal
+	{
+		// Constructor, should have name and food, velocity
+		public class Cat(...?,...?,...?)
+		{
+		}
+	}
+	
+	
+	In the main method, given a list of all animals, find the most velocity.
+	Example: similar as The give list of Vehicles
+
+
+2/ Define IShape:
+	double Area() -> return the area of that shape
+	
+	Implement this shape for rectangle, square.
+	
+	P/s: Constructor should have height and width.

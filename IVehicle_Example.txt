@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+
+public class MainClass
+{
+    public static void Main(string[] args)
+    {
+        List<IVehicle> vehicles = new List<IVehicle> {
+            new  Truck("White", 100),
+            new SUV("Red", 50)
+        };
+
+        DefineOverSpeedLimitVehicles(vehicles);
+
+    }
+
+    // John: get a given list of vehicles and need to find which one is over speed limit of 60
+    public static void DefineOverSpeedLimitVehicles(List<IVehicle> vehicles)
+    {
+        foreach (var eachVehicle in vehicles)
+        {
+            if (eachVehicle.GetMySpeed() > 60)
+            {
+                eachVehicle.Drive();
+            }
+        }
+    }
+}
+
+
+
+// The whole team will have meeting and define the abstract/ prototype
+public interface IVehicle
+{
+    void Drive();
+    string GetMyColor();
+    int GetMySpeed();
+}
+
+// Tina implements Truck
+public class Truck : IVehicle // MUST imlement the methods or properties of that interface
+{
+    private string color;
+    private int maxspeed;
+
+    public Truck(string _color, int _maxspeed)
+    {
+        color = _color;
+        maxspeed = _maxspeed;
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine("I am a Truck with max speed of " + maxspeed);
+    }
+
+    public string GetMyColor()
+    {
+        return color;
+    }
+
+    public int GetMySpeed()
+    {
+        return maxspeed;
+    }
+}
+
+// Philip implements SUV
+public class SUV : IVehicle // MUST imlement the methods or properties of that interface
+{
+    private string color;
+    private int maxspeed;
+
+    public SUV(string _color, int _maxspeed)
+    {
+        color = _color;
+        maxspeed = _maxspeed;
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine("I am a SUV with max speed of " + maxspeed);
+    }
+
+    public string GetMyColor()
+    {
+        return color;
+    }
+
+    public int GetMySpeed()
+    {
+        return maxspeed;
+    }
+}
