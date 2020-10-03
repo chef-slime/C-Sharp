@@ -17,9 +17,240 @@
 	Example: similar as The give list of Vehicles
 
 
+using System;
+using System.Collections.Generic;
+
+class MainClass 
+{
+  public static void Main (string[] args) 
+  {
+    List<IAnimal> animals = new List<IAnimal>()
+    {
+      new Rabbit ("Munchy", 30, "carrots"),
+      new Horse ("Pamela", 55, "apples" ),
+      new Cow ("Aranza", 25, "grass"),
+      new Pig ("Shirou", 17, "corn")
+    };
+  
+    RetrieveHighestVelocity(animals);
+  }
+  public static void RetrieveHighestVelocity(List<IAnimal> animals)
+  {
+    foreach (var eachAnimal in animals)
+    {
+      if (eachAnimal.GetVelocity() > 50)
+      {
+        eachAnimal.Eat();
+      }
+    }
+  }
+}
+public interface IAnimal
+  {
+    string GetName();
+    int GetVelocity();
+    void Eat();
+  }
+
+public class Rabbit : IAnimal
+{
+  private string name;
+  private int velocity;
+  private string food;
+
+  public Rabbit(string _name, int _velocity, string _food)
+  {
+    name = _name;
+    velocity = _velocity;
+    food = _food;
+
+  }
+
+  public string GetName()
+  {
+    return name;
+  }
+
+  public int GetVelocity()
+  {
+    return velocity;
+  }
+
+  public void Eat()
+  {
+    Console.WriteLine("\nI am a rabbit that eats " + food);
+  }
+}
+
+public class Horse : IAnimal
+{
+  private string name;
+  private int velocity;
+  private string food;
+
+  public Horse(string _name, int _velocity, string _food)
+  {
+    name = _name;
+    velocity = _velocity;
+    food = _food;
+
+  }
+
+  public string GetName()
+  {
+    return name;
+  }
+
+  public int GetVelocity()
+  {
+    return velocity;
+  }
+
+  public void Eat()
+  {
+    Console.WriteLine("\nI am a horse that eats " + food);
+  }
+}
+public class Cow : IAnimal
+{
+  private string name;
+  private int velocity;
+  private string food;
+
+  public Cow(string _name, int _velocity, string _food)
+  {
+    name = _name;
+    velocity = _velocity;
+    food = _food;
+
+  }
+
+  public string GetName()
+  {
+    return name;
+  }
+
+  public int GetVelocity()
+  {
+    return velocity;
+  }
+
+  public void Eat()
+  {
+    Console.WriteLine("\nI am a cow that eats " + food);
+  }
+}
+public class Pig : IAnimal
+{
+  private string name;
+  private int velocity;
+  private string food;
+
+  public Pig(string _name, int _velocity, string _food)
+  {
+    name = _name;
+    velocity = _velocity;
+    food = _food;
+
+  }
+
+  public string GetName()
+  {
+    return name;
+  }
+
+  public int GetVelocity()
+  {
+    return velocity;
+  }
+
+  public void Eat()
+  {
+    Console.WriteLine("\nI am a pig that eats " + food);
+  }
+}
+
+
 2/ Define IShape:
 	double Area() -> return the area of that shape
 	
 	Implement this shape for rectangle, square.
 	
 	P/s: Constructor should have height and width.
+	
+using System;
+using System.Collections.Generic;
+
+class MainClass 
+{
+  public static void Main (string[] args) 
+  {
+    List<IShape> shapes = new List<IShape>()
+    {
+      new Rectangle (8, 4),
+      new Square (2, 2),
+      new Circle (3),
+    };
+    CalculateArea(shapes);
+  }
+  public static void CalculateArea(List<IShape> shapes)
+  {
+      foreach (var eachShape in shapes)
+      {
+        Console.WriteLine("{0}: {1}", eachShape, eachShape.Area());
+      }
+  }
+}
+
+public interface IShape
+  {
+    double Area();
+  }
+
+public class Rectangle : IShape
+{
+    private double length;
+    private double width;
+
+    public Rectangle(double _length, double _width)
+    {
+      length = _length;
+      width = _width;
+    }
+
+    public double Area()
+    {
+      return length*width;
+    }
+}
+
+public class Square : IShape
+{
+    private double length;
+    private double width;
+
+    public Square(double _length, double _width)
+    {
+      length = _length;
+      width = _width;
+    }
+
+    public double Area()
+    {
+      return length*width;
+    }
+}
+public class Circle : IShape
+{
+    private double radius;
+    public Circle(double _radius)
+    {
+      radius = _radius;
+    }
+
+    public double Area()
+    {
+
+      return radius*radius*3.14;
+    }
+}
