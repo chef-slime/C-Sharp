@@ -1,0 +1,9 @@
++ Add Grade property for a student
++ Which teacher has the most rank in math?
++ Which student has the lowest score?
++ How many teachers are teaching a subject (any subjects) ?
++ Increase rank by 2 for all other teachers beside math teachers
++ Find Nani, and Decrease her rank by 2 - p/s implement the Decrease rank method.
++ Add GradePromotion method for a student
++ Promote Grade by one for all student who has score > 80
++ How many students in a given grade ?
