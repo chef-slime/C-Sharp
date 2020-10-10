@@ -1,0 +1,7 @@
+Design your contacts management with those UI components:
++ Textboxes for First, last name and phone number
++ A list box to display this contacts list
++ Add, Remove buttons
+
+Your contact class should have: first,last name, and phone number.
+	+ Should have properties: Firstname, Lastname, Phonenumber and Fullname
