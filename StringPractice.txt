@@ -1,0 +1,37 @@
+1/ Write a program in C# Sharp to find the length of a string without using library function (No Length Method). Go to the editor
+Test Data :
+Input the string : abcd
+Expected Output :
+
+Length of the string is : 4 
+
+
+2/ Write a program in C# Sharp to print individual characters of the string in reverse order. Go to the editor
+Test Data :
+Input the string : abcd
+Expected Output : 
+The characters of the string in reverse are : 
+d c b a
+
+
+3/ Write a program in C# Sharp to count a total number of vowel or consonant in a string.
+
+
+4/ Write a program in C# Sharp to count a total number of alphabets, digits and special characters in a string.Test Data :
+Input the string : Welcome to abcd1.
+Expected Output :
+
+Number of Alphabets in the string is : 4
+Number of Digits in the string is : 1
+Number of Special characters in the string is : 1
+
+
+5/ Write a program in C# Sharp to find maximum occurring character in a string.
+Hint: use Dictionary<char,int>
+
+Test Data :
+Input the string : Tina Di
+Expected Output :
+
+The Highest frequency of character 'i' appears number of times : 2
+
