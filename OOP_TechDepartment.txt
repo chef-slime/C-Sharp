@@ -1,0 +1,12 @@
+A requirement comes for a company, which they want a software to manage their employees.
+They are a software company, they have CTO, Team Leads and Engineers.
+Your software should able to let them manage their tech department.
+
+Engineer should have name, id, DoB and base salary.
+Team lead should have similar infor like an engineer, 
+But also, under a team lead there should be a list of engineers.
+CTO has similar info,but under a CTO should be a list of team leads.
+
+At the end of a year, CTO will give bonus to team leads 
+and team lead can decide how much they would share to engineers.
+Those bonus will add up to base salary.
