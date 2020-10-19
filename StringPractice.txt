@@ -5,6 +5,18 @@ Expected Output :
 
 Length of the string is : 4 
 
+using System;
+
+class MainClass {
+  public static void Main (string[] args) 
+  {
+    string input = Console.ReadLine();
+    int counter = 0;
+    foreach (char element in input)
+        counter++;
+    Console.WriteLine(counter);  
+  }
+}
 
 2/ Write a program in C# Sharp to print individual characters of the string in reverse order. Go to the editor
 Test Data :
@@ -13,9 +25,41 @@ Expected Output :
 The characters of the string in reverse are : 
 d c b a
 
+using System;
+
+class MainClass {
+  public static void Main (string[] args) 
+  {
+    string input = Console.ReadLine().Trim();
+    char[] inputarray = input.ToCharArray();
+    Array.Reverse(inputarray);
+    foreach (var element in inputarray)
+      Console.Write(element + " ");  }
+}
 
 3/ Write a program in C# Sharp to count a total number of vowel or consonant in a string.
 
+using System;
+
+class MainClass {
+  public static void Main (string[] args) 
+  {
+    string input = Console.ReadLine().Trim();
+    int vowel = 0;
+    int consonant = 0;
+
+    foreach (var element in input)
+    {
+        if (element == 'a' || element == 'e' || element == 'i' || element == 'o' || element == 'u')
+            vowel++;
+        else
+            consonant++;
+    }
+
+    Console.WriteLine($"There are {vowel} vowels");
+    Console.WriteLine($"There are {consonant} consonants");
+  }
+}
 
 4/ Write a program in C# Sharp to count a total number of alphabets, digits and special characters in a string.Test Data :
 Input the string : Welcome to abcd1.
@@ -25,6 +69,30 @@ Number of Alphabets in the string is : 4
 Number of Digits in the string is : 1
 Number of Special characters in the string is : 1
 
+using System;
+
+class MainClass {
+  public static void Main (string[] args) 
+  {
+    string input = Console.ReadLine().Trim();
+    int letter = 0;
+    int digit = 0;
+    int character = 0;
+    foreach (char element in input)
+    {
+        if (Char.IsDigit(element))
+            digit++;
+        if (Char.IsLetter(element))
+            letter++;
+        if (Char.IsDigit(element) == false && Char.IsLetter(element) == false && element != ' ')
+            character++;
+    }
+
+    Console.WriteLine($"Number of letters: {letter}");
+    Console.WriteLine($"Number of digits: {digit}");
+    Console.WriteLine($"Number of special characters: {character}");
+  }
+}
 
 5/ Write a program in C# Sharp to find maximum occurring character in a string.
 Hint: use Dictionary<char,int>
@@ -35,3 +103,29 @@ Expected Output :
 
 The Highest frequency of character 'i' appears number of times : 2
 
+using System;
+
+class MainClass {
+  public static void Main (string[] args) 
+  {
+    string input = Console.ReadLine().Trim();
+    int counter = 0;
+    char maxoccurletter = ' ';
+
+    foreach (var element in input)
+    {
+        counter = 0;
+        int max = int.MinValue;
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == element)
+                counter++;
+        }
+
+        if (counter > max)
+            maxoccurletter = element;
+    }
+
+    Console.WriteLine($"The letter {maxoccurletter} occurs the most at {counter} times");
+  }
+}
