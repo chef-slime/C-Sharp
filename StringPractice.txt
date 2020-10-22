@@ -10,11 +10,10 @@ using System;
 class MainClass {
   public static void Main (string[] args) 
   {
-    string input = Console.ReadLine();
-    int counter = 0;
-    foreach (char element in input)
-        counter++;
-    Console.WriteLine(counter);  
+    string input = Console.ReadLine().Trim();
+    char[] inputarray = input.ToCharArray();
+    for (int i = inputarray.Length-1; i>0; i--)
+      Console.WriteLine(inputarray[i]);
   }
 }
 
@@ -102,30 +101,39 @@ Input the string : Tina Di
 Expected Output :
 
 The Highest frequency of character 'i' appears number of times : 2
-
 using System;
+using System.Collections.Generic;
 
 class MainClass {
   public static void Main (string[] args) 
   {
     string input = Console.ReadLine().Trim();
-    int counter = 0;
-    char maxoccurletter = ' ';
 
-    foreach (var element in input)
-    {
-        counter = 0;
-        int max = int.MinValue;
-        for (int i = 0; i < input.Length; i++)
+    Dictionary <char, int> characters = new Dictionary <char, int> ();
+
+	  char maxoccurletter = ' ';
+    int max = int.MinValue;
+
+    for (int i = 0; i < input.Length; i++)
         {
-            if (input[i] == element)
-                counter++;
+
+          if (characters.ContainsKey(input[i]) == true)
+            characters[input[i]] ++;
+          else
+            characters.Add(input[i], 1);
         }
 
-        if (counter > max)
-            maxoccurletter = element;
-    }
+	foreach (KeyValuePair<char, int> element in characters)
+	{
+		
+		if (element.Value > max)
+		{
+			maxoccurletter = element.Key;
+      max = element.Value;
+		}
+	}
 
-    Console.WriteLine($"The letter {maxoccurletter} occurs the most at {counter} times");
+
+    Console.WriteLine($"The letter {maxoccurletter} occurs the most at {max} times");
   }
 }
