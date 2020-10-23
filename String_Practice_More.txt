@@ -1,0 +1,35 @@
+1/ check a given string rotated palindrome or not
+Example: ABCBA -> Yes
+
+2/ Given a string, replace a char to other char
+Example: 
+	Given: TinaDinh
+	Replace: n to N
+	Output: TiNaDiNh
+
+3/ Find permutations of given string
+Example: ABC
+Output: ABC, ACB, BAC, BCA, CBA, CAB
+
+
+4/ Write a function that returns true if all characters in a string are identical and false otherwise.
+
+Examples
+isIdentical("aaaaaa") ➞ true
+
+isIdentical("aabaaa") ➞ false
+
+isIdentical("ccccca") ➞ false
+
+isIdentical("kk") ➞ true
+
+5/ Create a function that takes a string as an argument and returns a coded (h4ck3r 5p34k) version of the string.
+
+Examples
+HackerSpeak("javascript is cool") ➞ "j4v45cr1pt 15 c00l"
+
+HackerSpeak("programming is fun") ➞ "pr0gr4mm1ng 15 fun"
+
+HackerSpeak("become a coder") ➞ "b3c0m3 4 c0d3r"
+
+Hits: Try to find how a letter  = a number
