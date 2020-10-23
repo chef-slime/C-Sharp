@@ -1,0 +1,25 @@
+1/ OOP Practice
+	The Foobar Motor Company makes cars and vans,which when being built comprises (among lots of other things) a body shell, a chassis and glassware for the windows.
+	Althogh both cars and vands need all of the same type of components, the specifics of each type differ depending upon whether it is being used for a car or a van.
+	In other words:
+	+ A car's body shell is different from a van's body shell
+	+ A car's chassis is different from a van's chassis
+	+ A car's glassware is different from a van's glassware
+	
+	Design your system to handle this business.
+	
+	Hits: 3 interfaces: IBody, IChassis, IGlassware, IVehicle
+		
+		IBody {	string BodyParts( get;} }
+		CarBody : IBody 
+		{
+			public string BodyParts
+			{
+				get{
+					return "Body sheel parts for a car";
+				}
+			}
+		}
+
+2/ Reading this book from beginning to page 36
+https://cin.ufpe.br/~fbma/Crack/Cracking%20the%20Coding%20Interview%20189%20Programming%20Questions%20and%20Solutions.pdf
