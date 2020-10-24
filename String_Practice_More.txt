@@ -1,11 +1,58 @@
 1/ check a given string rotated palindrome or not
 Example: ABCBA -> Yes
 
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string _input = Console.ReadLine();
+        while (_input != string.Empty)
+        {
+            Console.WriteLine(IsPalindrome(_input));
+            _input = Console.ReadLine();
+        }
+
+    }
+
+    public static bool IsPalindrome(string input)
+    {
+
+        input = Regex.Replace(input, "[^0-9A-Za-z]", string.Empty);
+
+        string reverseinput = string.Empty;
+        for (int i = input.Length - 1; i > -1; i--)
+            reverseinput += input[i];
+
+        return string.Equals(input, reverseinput, StringComparison.OrdinalIgnoreCase);
+    }
+}
+
 2/ Given a string, replace a char to other char
 Example: 
 	Given: TinaDinh
 	Replace: n to N
 	Output: TiNaDiNh
+	
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string input = Console.ReadLine();
+        while (input != string.Empty)
+        {
+            input = input.Replace('n', 'N');
+            Console.WriteLine(input);
+            input = Console.ReadLine();
+
+        }
+
+    }
+}
 
 3/ Find permutations of given string
 Example: ABC
@@ -23,6 +70,38 @@ isIdentical("ccccca") ➞ false
 
 isIdentical("kk") ➞ true
 
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string _input = Console.ReadLine();
+        while (_input != string.Empty)
+        {
+            Console.WriteLine(isIdentical(_input));
+            _input = Console.ReadLine();
+
+        }
+
+    }
+
+    public static bool isIdentical (string input)
+    {
+        int counter = 0;
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[0] == input[i])
+                counter++;
+        }
+
+        if (counter == input.Length)
+            return true;
+        else
+            return false;
+    }
+}
+
 5/ Create a function that takes a string as an argument and returns a coded (h4ck3r 5p34k) version of the string.
 
 Examples
@@ -33,3 +112,44 @@ HackerSpeak("programming is fun") ➞ "pr0gr4mm1ng 15 fun"
 HackerSpeak("become a coder") ➞ "b3c0m3 4 c0d3r"
 
 Hits: Try to find how a letter  = a number
+
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string _input = Console.ReadLine().ToLower();
+        while (_input != string.Empty)
+        {
+            Console.WriteLine(HackerSpeak(_input));
+            _input = Console.ReadLine();
+
+        }
+
+    }
+
+    public static string HackerSpeak(string input)
+    {
+        Dictionary<char, char> substitutions = new Dictionary<char, char>
+        {
+            {'a', '!'},
+            {'e', '@' },
+            {'i', '#' },
+            {'o', '$' },
+            {'u', '%' }
+        };
+
+        foreach (char character in input)
+        {
+            if (substitutions.ContainsKey(character))
+                input = input.Replace(character, substitutions[character]);
+        }
+
+        return input;
+    }
+        
+ 
+}
