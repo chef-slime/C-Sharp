@@ -19,11 +19,8 @@ class Program
 
     public static bool IsPalindrome(string input)
     {
-
-        input = Regex.Replace(input, "[^0-9A-Za-z]", string.Empty);
-
         string reverseinput = string.Empty;
-        for (int i = input.Length - 1; i > -1; i--)
+        for (int i = (input.Length - 1)/2; i > -1; i--)
             reverseinput += input[i];
 
         return string.Equals(input, reverseinput, StringComparison.OrdinalIgnoreCase);
@@ -45,8 +42,20 @@ class Program
         string input = Console.ReadLine();
         while (input != string.Empty)
         {
-            input = input.Replace('n', 'N');
-            Console.WriteLine(input);
+            string result = "";
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == 'n')
+                {
+                    result += 'N';
+                }
+
+                else
+                {
+                    result += input[i];
+                }
+            }
+            Console.WriteLine(result);
             input = Console.ReadLine();
 
         }
@@ -117,7 +126,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-class Program
+class MainClass
 {
     public static void Main(string[] args)
     {
@@ -142,14 +151,15 @@ class Program
             {'u', '%' }
         };
 
-        foreach (char character in input)
+        string result = "";
+        for (int i = 0; i < input.Length; i++)
         {
-            if (substitutions.ContainsKey(character))
-                input = input.Replace(character, substitutions[character]);
+            if (substitutions.ContainsKey(input[i]))
+                result += substitutions[input[i]];
+            else
+                result += input[i];
         }
 
-        return input;
+        return result;
     }
-        
- 
 }
