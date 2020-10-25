@@ -2,7 +2,6 @@
 Example: ABCBA -> Yes
 
 using System;
-using System.Text.RegularExpressions;
 
 class Program
 {
@@ -19,11 +18,21 @@ class Program
 
     public static bool IsPalindrome(string input)
     {
-        string reverseinput = string.Empty;
-        for (int i = (input.Length - 1)/2; i > -1; i--)
-            reverseinput += input[i];
-
-        return string.Equals(input, reverseinput, StringComparison.OrdinalIgnoreCase);
+        int midpoint = input.Length / 2;
+        for (int i = 1; i < midpoint; i++)
+        {
+            if (input.Length % 2 != 0)
+            {
+                if (input[midpoint - i] != input[midpoint + i])
+                        return false;      
+            }
+            else
+            {
+                if (input[midpoint - i] != input[midpoint + (i - 1)])
+                    return false;
+            }
+        }
+        return true;
     }
 }
 
