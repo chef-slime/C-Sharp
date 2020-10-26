@@ -1,0 +1,105 @@
+1/ Given an array, return true/false if the array has all unique number.
+Example: 
+[12, 4, 0, 12] -> False
+[12, 4, 0, 11] -> True
+
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[] numbers = new int[4];
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.WriteLine("Enter an integer: ");
+            numbers[i] = Int32.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine(UniqueNumber(numbers));
+    }
+
+    public static bool UniqueNumber(int [] input)
+    {
+        for (int i = 0; i<input.Length; i++)
+        {
+            for (int n = i+1; n<input.Length; n++)
+            {
+                if (input[i] == input[n])
+                    return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+2/ Given an array, find the second largest and smallest
+Example:
+[4, 7, 8, 10, 16, 80]
+The second largest: 16
+The second smallest: 7
+
+using System;
+using System.Collections.Generic;
+class Program
+{
+    public static void Main(string[] args)
+    {
+        List<int> numbers = new List<int>();
+        Console.WriteLine("Enter an integer: ");
+        string _input = Console.ReadLine();
+        while (_input != string.Empty)
+        {   
+            numbers.Add(Int32.Parse(_input));
+            Console.WriteLine("Enter an integer: ");
+            _input = Console.ReadLine();
+        }
+
+        Console.WriteLine($"Second largest {SecondLargest(numbers)}");
+        Console.WriteLine($"Second smallest {SecondSmallest(numbers)}");
+
+    }
+
+    public static int SecondLargest(List<int> input)
+    {
+        int max = int.MinValue;
+        for (int i = 0; i<2; i++)
+        {
+            max = int.MinValue;
+            for (int n = 0; n<input.Count; n++)
+            {
+                if (input[n] > max)
+                {
+                    max = input[n];
+                }
+            }
+            input.Remove(max);
+        }
+
+        return max;
+    }
+    public static int SecondSmallest(List<int> input)
+    {
+        int min = int.MaxValue;
+        for (int i = 0; i < 2; i++)
+        {
+            min = int.MaxValue;
+            for (int n = 0; n < input.Count; n++)
+            {
+                if (input[n] < min)
+                {
+                    min = input[n];
+                }
+            }
+            input.Remove(min);
+        }
+
+        return min;
+    }
+
+}
+
+3/ Given a sentense, return true/false if the sentense contain all alphabets
+Example: Crwth vox zaps qi gym fjeld bunk -> True
