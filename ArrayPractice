@@ -103,3 +103,44 @@ class Program
 
 3/ Given a sentense, return true/false if the sentense contain all alphabets
 Example: Crwth vox zaps qi gym fjeld bunk -> True
+
+using System;
+using System.Collections.Generic;
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string _input = Console.ReadLine().ToLower();
+        while (_input != string.Empty)
+        {
+            string[] inputarray = _input.Split(' ');
+            string newinput = string.Join("", inputarray);
+            Console.WriteLine(AllLetters(newinput));
+            _input = Console.ReadLine();
+        }
+
+    }
+
+    public static bool AllLetters(string input)
+    {
+        List<char> alphabet = new List<char>()
+        {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
+        int counter = alphabet.Count;
+
+        foreach (char character in input)
+        {
+            if (alphabet.Contains(character))
+            {
+                counter--;
+                
+            }
+        }
+
+        if (counter <= 0)
+            return true;
+        else
+            return false;
+    }
+}
