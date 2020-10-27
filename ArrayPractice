@@ -4,33 +4,24 @@ Example:
 [12, 4, 0, 11] -> True
 
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     public static void Main(string[] args)
     {
-        int[] numbers = new int[4];
-        for (int i = 0; i < numbers.Length; i++)
+        HashSet<int> updatedset = new HashSet<int>();
+        List<int> originalset = new List<int>();
+        string _input = Console.ReadLine();
+        
+        while (_input != string.Empty)
         {
-            Console.WriteLine("Enter an integer: ");
-            numbers[i] = Int32.Parse(Console.ReadLine());
+            originalset.Add(int.Parse(_input));
+            updatedset.Add(int.Parse(_input));
+            _input = Console.ReadLine();
         }
 
-        Console.WriteLine(UniqueNumber(numbers));
-    }
-
-    public static bool UniqueNumber(int [] input)
-    {
-        for (int i = 0; i<input.Length; i++)
-        {
-            for (int n = i+1; n<input.Length; n++)
-            {
-                if (input[i] == input[n])
-                    return false;
-            }
-        }
-
-        return true;
+        Console.WriteLine(originalset.Count == updatedset.Count);
     }
 }
 
@@ -101,7 +92,7 @@ class Program
 
 }
 
-3/ Given a sentense, return true/false if the sentense contain all alphabets
+3/ Given a sentence, return true/false if the sentence contain all alphabets
 Example: Crwth vox zaps qi gym fjeld bunk -> True
 
 using System;
@@ -123,22 +114,11 @@ class Program
 
     public static bool AllLetters(string input)
     {
-        List<char> alphabet = new List<char>()
-        {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 
+        HashSet <char> alphabet = new HashSet<char>()
+        {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n',
         'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
-        int counter = alphabet.Count;
-
-        foreach (char character in input)
-        {
-            if (alphabet.Contains(character))
-            {
-                counter--;
-                
-            }
-        }
-
-        if (counter <= 0)
+        
+        if (input.Length >= alphabet.Count)
             return true;
         else
             return false;
