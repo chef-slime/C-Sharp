@@ -1,0 +1,10 @@
+There is a zoo, they come to our software company and asking for a management software.
+The software is simple enough to allow a manager to:
++ know how many total animals are there
++ know how many animals per each category
++ add/remove an animal from any categories
+
+Hints: 
++You need to think about how many animals categories out there? Just roughly on top of your head
++Which properties all animal have? Again, just roughly, not need to be 100% science here
++Then which properties, methods should be in a manager?
