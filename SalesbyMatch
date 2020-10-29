@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("How many socks in the pile? ");
+        string _input = Console.ReadLine();
+        while (_input != string.Empty)
+        {
+            int _numberofsocks = int.Parse(_input);
+
+            int[] _sockpile = new int[_numberofsocks];
+          
+            Console.WriteLine("What is the color of each sock? ");
+            string[] colorofsocks = Console.ReadLine().Split(" ");
+
+            for (int i = 0; i < colorofsocks.Length; i++)
+            {
+                _sockpile[i] = int.Parse(colorofsocks[i]);
+            }
+
+            Console.WriteLine(sockMerchant(_sockpile));
+            Console.WriteLine("How many socks in the pile? ");
+            _input = Console.ReadLine();
+        }
+
+    }
+
+    public static int sockMerchant(int[] sockpile)
+    {
+        int totalpairs = 0;
+        Dictionary<int, int> sockpair = new Dictionary<int, int>();
+        foreach (int element in sockpile)
+        {
+            if (sockpair.ContainsKey(element) == false)
+            {
+                int counter = 0;
+                for (int i = 0; i < sockpile.Length; i++)
+                {
+                    if (sockpile[i] == element)
+                        counter++;
+                }
+
+                int numberofpairs = counter / 2;
+                
+                sockpair.Add(element, numberofpairs);
+            }
+        }
+
+        foreach (var pair in sockpair)
+            totalpairs += pair.Value;
+
+        return totalpairs;
+    }
+}
