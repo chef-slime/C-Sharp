@@ -55,3 +55,14 @@ class Program
         return totalpairs;
     }
 }
+
+10/30: NOTE - I got your solution, but It is still not efficent: "2 for loops".
+The idea is this:
+foreach item in sockpile
+    if a hashset contains item
+        pair ++;
+        hashset remove that item;
+    else
+        hashset add that item;
+
+
