@@ -1,0 +1,23 @@
+1/ Write a method
+	public static int max(int[][] a) 
+that returns the maximum value in the 2d parameter array a.
+
+2/ Write a method
+	public static int rowSum(int[][] a, int x)
+that returns the sum of the elements in Row x of a.
+
+3/ Write a method
+	public static int columnSum(int[][] a, int x)
+that returns the sum of the elements in Column x of a (careful with rows of different lengths!).
+
+4/ Write a method
+	public static int[] allRowSums(int[][] a)
+that calculates the row sum for every row and returns each of the values in an array. Index i of the return array contains the sum of elements in row i.
+
+5/ Write a method
+	public static boolean isRowMagic(int[][] a)
+that checks if the array is row-magic (this means that every row has the same row sum).
+
+6/ Write a method
+	public static boolean isColumnMagic(int[][] a)
+that checks if the array is column-magic (this means that every column has the same column sum).
