@@ -126,22 +126,16 @@ class Program
 
     public static bool AllLetters(string input)
     {
-        HashSet <char> alphabet = new HashSet<char>()
-        {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n',
-        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-        
-        if (input.Length >= alphabet.Count)
+        HashSet<char> alphabet = new HashSet<char>();
+
+        foreach (char character in input)
+        {
+            alphabet.Add(character);
+        }
+
+        if (alphabet.Count == 26)
             return true;
         else
             return false;
     }
 }
-
-
-10/30: NOTE - The idea is "ok", but it is not right.
-if input = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-input.Length >= alphabet.Count right?
-
-What we need to do is: We need to use a HashSet to add each char in a string.
-And at the end, we need to check if the HashSet has same length with the alphabet.
-
