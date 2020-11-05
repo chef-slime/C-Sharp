@@ -12,7 +12,7 @@ class Program
             int _numberofsocks = int.Parse(_input);
 
             int[] _sockpile = new int[_numberofsocks];
-          
+
             Console.WriteLine("What is the color of each sock? ");
             string[] colorofsocks = Console.ReadLine().Split(" ");
 
@@ -30,39 +30,20 @@ class Program
 
     public static int sockMerchant(int[] sockpile)
     {
-        int totalpairs = 0;
-        Dictionary<int, int> sockpair = new Dictionary<int, int>();
+        int pairs = 0;
+        HashSet<int> sockpair = new HashSet<int>();
         foreach (int element in sockpile)
         {
-            if (sockpair.ContainsKey(element) == false)
+            if (sockpair.Contains(element))
             {
-                int counter = 0;
-                for (int i = 0; i < sockpile.Length; i++)
-                {
-                    if (sockpile[i] == element)
-                        counter++;
-                }
-
-                int numberofpairs = counter / 2;
-                
-                sockpair.Add(element, numberofpairs);
+                pairs++;
+                sockpair.Remove(element);
             }
+
+            else
+                sockpair.Add(element);
         }
 
-        foreach (var pair in sockpair)
-            totalpairs += pair.Value;
-
-        return totalpairs;
+        return pairs;
     }
 }
-
-10/30: NOTE - I got your solution, but It is still not efficent: "2 for loops".
-The idea is this:
-foreach item in sockpile
-    if a hashset contains item
-        pair ++;
-        hashset remove that item;
-    else
-        hashset add that item;
-
-
