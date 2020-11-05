@@ -127,6 +127,94 @@ that calculates the row sum for every row and returns each of the values in an a
 	public static boolean isRowMagic(int[][] a)
 that checks if the array is row-magic (this means that every row has the same row sum).
 
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[][] a = 
+        {
+            new int[] {1, 5, 9},
+            new int[] {4, 5, 6},
+            new int[] {3, 4, 8}
+        };
+
+        Console.WriteLine(Sum(a));
+
+        bool Sum (int[][] _a)
+        {
+            HashSet<int> counter = new HashSet<int>();
+            for (int row = 0; row < a.Length; row++)
+            {
+                int sum = 0;
+                for (int column = 0; column < a[row].Length; column++)
+                {
+                    sum += a[row][column];
+                }
+                counter.Add(sum);
+            }
+
+            if (counter.Count == 1)
+                return true;
+            else
+                return false;
+        }
+    }
+}
+
 6/ Write a method
 	public static boolean isColumnMagic(int[][] a)
 that checks if the array is column-magic (this means that every column has the same column sum).
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[][] a = 
+        {
+            new int[] {1, 4, 3},
+            new int[] {5, 5, 4},
+            new int[] {9, 6, 8}
+        };
+
+        Console.WriteLine(Sum(a));
+
+        bool Sum (int[][] _a)
+        {
+            Dictionary<int, int> sums = new Dictionary<int, int>();
+
+            HashSet<int> counter = new HashSet<int>();
+
+            for (int row = 0; row < a.Length; row++)
+            {
+                int sum = 0;
+                for (int column = 0; column < a[row].Length; column++)
+                {
+                    sum = 0;
+                    sum += a[row][column];
+
+
+                    if (sums.ContainsKey(column))
+                        sums[column] += sum;
+                    else
+                        sums.Add(column, sum);
+                }
+            }
+
+            foreach (var kvp in sums)
+            {
+                counter.Add(kvp.Value);
+            }
+
+            if (counter.Count == 1)
+                return true;
+            else
+                return false;
+        }
+    }
+}
