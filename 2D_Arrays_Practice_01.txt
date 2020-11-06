@@ -42,6 +42,7 @@ using System;
 using System.Collections.Generic;
 
 
+
 class Program
 {
     public static void Main(string[] args)
@@ -52,27 +53,17 @@ class Program
             new int[] {5, 6, 7, 8},
             new int[] {9, 10, 11, 12}
         };
-
-        for(int i = 0; i < Sum(a).Count; i++)
-            Console.WriteLine($"Row {i+1}: {Sum(a)[i]}");
-
-        List<int> Sum (int[][] _a)
-        {
-            List<int> sums = new List<int>(); 
-            int sum = 0;
-            for (int row = 0; row < a.Length; row++)
-            {
-                sum = 0;
-                for (int column = 0; column < a[row].Length; column++)
-                {
-                        sum += a[row][column];
-                }
-
-                sums.Add(sum);
-            }
-            return sums;
-        }
+		Console.WriteLine(rowSum(a, 1)); // Sum of the first row
     }
+	
+	public static int rowSum(int[][] a, int x)
+	{
+		int sum = 0;
+		for ( int column = 0; column < a[1].Lenght; column ++)
+			// Adding up elements in the first row into sum variable
+		
+		return sum;
+	}
 }
 
 3/ Write a method
@@ -122,6 +113,42 @@ class Program
 4/ Write a method
 	public static int[] allRowSums(int[][] a)
 that calculates the row sum for every row and returns each of the values in an array. Index i of the return array contains the sum of elements in row i.
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[][] a =
+        {
+            new int[] {1, 2, 3, 4},
+            new int[] {5, 6, 7, 8},
+            new int[] {9, 10, 11, 12}
+        };
+
+        int[] arraySum = allRowSums(a);
+        foreach (int sum in arraySum)
+        {
+            System.Console.WriteLine(sum);
+        }
+    }
+
+    public static int[] allRowSums(int[][] a)
+    {
+        int[] arraySum = new int[a.GetLength(0)];
+        for (int row = 0; row < a.GetLength(0); row++)
+        {
+            int sumEachRow = 0;
+            for (int column = 0; column < a[row].Length; column++)
+            {
+                // Adding up each element of a row to sumEachRow
+            }
+
+            arraySum[row] = sumEachRow;
+        }
+
+        return arraySum;
+    }
+}
 
 5/ Write a method
 	public static boolean isRowMagic(int[][] a)
