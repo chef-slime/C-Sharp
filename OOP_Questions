@@ -1,0 +1,18 @@
+1/ OOP vs Functional programming
+
+OOP focuses on the data of a program, how we can create or alter it in a single location called objects. Functional programming separates data and its behavior.
+It tries to avoid changing data, so the evolution that takes place occurs on the operations.
+
+2/ A class can inherit from multi interfaces, but not multi classes because methods in interfaces are abstract, but classes implement those methods. 
+A class inheriting an interface means you're telling what a class is able to do, without saying anything about how the class will do it. 
+You're declaring that a class "looks like" something, whereas inheriting classes is used to declare that a class "is a" something, which could lead 
+to ambiguity in the method to be called.
+
+3/ OOP features
+
+Abstraction, Encapsulation, Inheritance, and Polymorphism
+
+4/ String is value type or reference type?
+
+A string is a reference type since it doesn't have a pre-defined memory size and varies depending on its implementation. 
+This contrasts with int type variables which are value type and have fixed memory allocation at 4 bytes of Value range -2,147,483,648 through 2,147,483,647.
