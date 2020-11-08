@@ -39,30 +39,28 @@ class Program
 that returns the sum of the elements in Row x of a.
 
 using System;
-using System.Collections.Generic;
-
-
-
 class Program
 {
-    public static void Main(string[] args)
-    {
-        int[][] a = 
-        {
-            new int[] {1, 2, 3, 4},
-            new int[] {5, 6, 7, 8},
-            new int[] {9, 10, 11, 12}
-        };
+	public static void Main(string[] args)
+	{
+		int[][] a =
+		{
+			new int[] {1, 2, 3, 4},
+			new int[] {5, 6, 7, 8},
+			new int[] {9, 10, 11, 12}
+		};
 		Console.WriteLine(rowSum(a, 1)); // Sum of the first row
-    }
-	
+	}
+
 	public static int rowSum(int[][] a, int x)
 	{
 		int sum = 0;
-		for ( int column = 0; column < a[1].Lenght; column ++)
-			// Adding up elements in the first row into sum variable
-		
-		return sum;
+		for (int column = 0; column < a[1].Length; column++)
+        {
+			sum += a[x][column];
+        }
+
+			return sum;
 	}
 }
 
@@ -114,6 +112,8 @@ class Program
 	public static int[] allRowSums(int[][] a)
 that calculates the row sum for every row and returns each of the values in an array. Index i of the return array contains the sum of elements in row i.
 
+using System;
+
 class Program
 {
     public static void Main(string[] args)
@@ -140,7 +140,7 @@ class Program
             int sumEachRow = 0;
             for (int column = 0; column < a[row].Length; column++)
             {
-                // Adding up each element of a row to sumEachRow
+                sumEachRow += a[row][column];
             }
 
             arraySum[row] = sumEachRow;
