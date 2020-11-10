@@ -1,0 +1,180 @@
+1/ Sort element in a given row of 2D array.
+Example:
+Array: 
+4 2 9 5
+1 8 6 3
+
+Sort 1st row.
+Output:
+2 4 5 9
+1 8 6 3
+
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[][] a = new int[][]
+            {
+                new int[] {4, 2, 9, 5 },
+                new int[] {1, 8, 6, 3 }
+            };
+
+            for (int row = 0; row < a.Length; row++)
+            {
+                Array.Sort(a[0]);
+                for (int column = 0; column < a[row].Length; column++)
+                    Console.Write("{0} ", a[row][column]);
+                Console.WriteLine();
+            }
+
+        }
+    }
+}
+
+2/ Sort element in a given column of 2D array.
+Example:
+Array: 
+4 2
+1 8
+3 9
+0 5
+
+Sort 1st column.
+Output:
+0 2
+1 8
+3 9
+4 5
+
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[][] a = new int[][]
+            {
+                new int[] {4, 2},
+                new int[] {1, 8},
+                new int[] {3, 9},
+                new int[] {0, 5}
+            };
+
+            int[][] sortedarray = new int[2][]
+            {
+                new int[] {0, 0, 0, 0 },
+                new int[] {0, 0, 0, 0 }
+            };
+
+            for (int column = 0; column < a[0].Length; column++)
+            {
+                for (int row = 0; row < a.Length; row++)
+                {
+                    sortedarray[column][row] = a[row][column];
+                }
+            }
+
+            for (int column = 0; column < sortedarray[0].Length; column++)
+            {
+                Array.Sort(sortedarray[0]);
+                for (int row = 0; row < sortedarray.Length; row++)
+                {
+                    Console.Write("{0} ", sortedarray[row][column]);
+                }
+                Console.WriteLine();
+
+            }
+        }
+    }
+}
+
+3/ Calculate the sum of the 2 diagonal lines.
+
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[][] a = new int[][]
+            {
+                new int[] {4, 2, 1},
+                new int[] {8, 3, 9},
+                new int[] {0, 5, 6}
+            };
+
+            int sum1 = 0;
+            int row = 0;
+            int column = 0;
+            for (column = 0; column < a[0].Length; column++)
+            {
+                sum1 += a[row][column];
+                row++;
+            }
+
+            int sum2 = 0;
+            row = 0;
+            for (column = a.Length-1; column >= 0; column--)
+            {
+                sum2 += a[row][column];
+                row++;
+            }
+
+            
+            Console.WriteLine($"Sum for 1st diagonal: {sum1}");
+            Console.WriteLine($"Sum for 2nd diagonal: {sum2}");
+
+        }
+    }
+}
+
+4/ Find all the Prime numbers in a 2D Array.
+
+using System;
+using System.Collections.Generic;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[][] a = new int[][]
+            {
+                new int[] {4, 2, 1},
+                new int[] {8, 3, 9},
+                new int[] {0, 5, 6}
+            };
+
+            List<int> prime = new List<int>();
+            for (int row = 0; row < a.Length; row++)
+            {
+                for (int column = 0; column < a[row].Length; column++)
+                {
+                    int counter = 0;
+                    for (int i = 1; i <= a[row][column]; i++)
+                    {
+                        if (a[row][column] % i == 0)
+                            counter++;
+                    }
+                    // If a number is prime, it will be divisible by 1 and itself
+                    // counter should only increment twice if the number is prime
+                    if (counter == 2)
+                        prime.Add(a[row][column]);
+
+                }
+            }
+
+            foreach (var element in prime)
+                Console.WriteLine($"{element}");
+        }
+    }
+}
