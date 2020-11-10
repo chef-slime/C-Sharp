@@ -76,35 +76,22 @@ class Program
 {
     public static void Main(string[] args)
     {
-        int[][] a = 
-        {
+            int[][] a =
+            {
             new int[] {1, 2, 3, 4},
             new int[] {5, 6, 7, 8},
-            new int[] {9, 10, 11, 12, 13}
-        };
+            new int[] {9, 10, 11, 12}
+            };
 
-        foreach (var kvp in Sum(a))
-            Console.WriteLine($"Column {kvp.Key+1}: {kvp.Value}");
-
-        Dictionary<int, int> Sum (int[][] _a)
-        {
-            Dictionary<int, int> sums = new Dictionary<int, int>();
-            int sum = 0;
-            for (int row = 0; row < a.Length; row++)
+            for (int column = 0; column < 1; column++)
             {
-                for (int column = 0; column < a[row].Length; column++)
+                int sum = 0;
+                for (int row = 0; row < a.Length; row++)
                 {
-                    sum = 0;
                     sum += a[row][column];
-
-                    if (sums.ContainsKey(column))
-                        sums[column] += sum;
-                    else
-                        sums.Add(column, sum);
                 }
+                Console.WriteLine($"Sum for column {column + 1}: {sum}");
             }
-            return sums;
-        }
     }
 }
 
@@ -202,6 +189,13 @@ class Program
 {
     public static void Main(string[] args)
     {
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
         int[][] a = 
         {
             new int[] {1, 4, 3},
@@ -242,6 +236,141 @@ class Program
                 return true;
             else
                 return false;
+        }
+    }
+}using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[][] a = 
+        {
+            new int[] {1, 4, 3},
+            new int[] {5, 5, 4},
+            new int[] {9, 6, 8}
+        };
+
+        Console.WriteLine(Sum(a));
+
+        bool Sum (int[][] _a)
+        {
+            Dictionary<int, int> sums = new Dictionary<int, int>();
+
+            HashSet<int> counter = new HashSet<int>();
+
+            for (int row = 0; row < a.Length; row++)
+            {
+                int sum = 0;
+                for (int column = 0; column < a[row].Length; column++)
+                {
+                    sum = 0;
+                    sum += a[row][column];
+
+
+                    if (sums.ContainsKey(column))
+                        sums[column] += sum;
+                    else
+                        sums.Add(column, sum);
+                }
+            }
+
+            foreach (var kvp in sums)
+            {
+                counter.Add(kvp.Value);
+            }
+
+            if (counter.Count == 1)
+                return true;
+            else
+                return false;
+        }
+    }
+}using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[][] a = 
+        {
+            new int[] {1, 4, 3},
+            new int[] {5, 5, 4},
+            new int[] {9, 6, 8}
+        };
+
+        Console.WriteLine(Sum(a));
+
+        bool Sum (int[][] _a)
+        {
+            Dictionary<int, int> sums = new Dictionary<int, int>();
+
+            HashSet<int> counter = new HashSet<int>();
+
+            for (int row = 0; row < a.Length; row++)
+            {
+                int sum = 0;
+                for (int column = 0; column < a[row].Length; column++)
+                {
+                    sum = 0;
+                    sum += a[row][column];
+
+
+                    if (sums.ContainsKey(column))
+                        sums[column] += sum;
+                    else
+                        sums.Add(column, sum);
+                }
+            }
+
+            foreach (var kvp in sums)
+            {
+                counter.Add(kvp.Value);
+            }
+
+            if (counter.Count == 1)
+                return true;
+            else
+                return false;
+        }
+    }
+}using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+            int[][] a =
+             {
+            new int[] {1, 4, 3},
+            new int[] {5, 5, 4},
+            new int[] {9, 6, 8}
+        };
+
+            Console.WriteLine(Sum(a));
+
+            bool Sum(int[][] _a)
+            {
+                HashSet<int> counter = new HashSet<int>();
+                
+                for(int column = 0; column < a[0].Length; column++)
+                {
+                    int sum = 0;
+                    for (int row = 0; row < a.Length; row++)
+                    {
+                        sum += a[row][column];
+                    }
+
+                    counter.Add(sum);
+                }
+
+                if (counter.Count == 1)
+                    return true;
+                else
+                    return false;
         }
     }
 }
