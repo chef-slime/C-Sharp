@@ -66,26 +66,21 @@ namespace C_Sharp_Compiler
                 new int[] {0, 5}
             };
 
-            int[][] sortedarray = new int[2][]
-            {
-                new int[] {0, 0, 0, 0 },
-                new int[] {0, 0, 0, 0 }
-            };
+            int[] sortedarray = new int[] { 0, 0, 0, 0 };
+            
 
-            for (int column = 0; column < a[0].Length; column++)
+            for (int column = 0; column < a.Length; column++)
             {
-                for (int row = 0; row < a.Length; row++)
                 {
-                    sortedarray[column][row] = a[row][column];
+                    sortedarray[column] = a[column][0];
                 }
             }
 
-            for (int column = 0; column < sortedarray[0].Length; column++)
+            for (int column = 0; column < sortedarray.Length; column++)
             {
-                Array.Sort(sortedarray[0]);
-                for (int row = 0; row < sortedarray.Length; row++)
+                Array.Sort(sortedarray);
                 {
-                    Console.Write("{0} ", sortedarray[row][column]);
+                    Console.Write("{0} ", sortedarray[column]);
                 }
                 Console.WriteLine();
 
@@ -160,14 +155,20 @@ namespace C_Sharp_Compiler
                 for (int column = 0; column < a[row].Length; column++)
                 {
                     int counter = 0;
-                    for (int i = 1; i <= a[row][column]; i++)
+
+                    /* Loop begins at 2 because all numbers are divisible by 1
+                     * Loop does not need to repeat itself a[row][column] of times
+                     * because if the number is composite, it will be divisible by
+                     * smaller integers and can be "broken down" in a factor tree more than once
+                     */
+                    for (int i = 2; i <= a[row][column]/2; i++)
                     {
                         if (a[row][column] % i == 0)
-                            counter++;
+                            counter = 1;
                     }
                     // If a number is prime, it will be divisible by 1 and itself
                     // counter should only increment twice if the number is prime
-                    if (counter == 2)
+                    if (counter == 0 && a[row][column] != 1 && a[row][column] != 0)
                         prime.Add(a[row][column]);
 
                 }
