@@ -1,0 +1,39 @@
+1/Sorting - Read and have ideas
++ Bubble sort (Need to implement by yourself desc vs asc)
+	Example:
+		Given:  [ 2, 6, 4, 9, 8]
+		Output: [ 2, 4, 6, 8, 9]
++ Quick sort
+
+2/Searching - Read and have ideas
++ Linear (Need to implement by yourself)
+	Example:
+		Given:  [ 2, 6, 4, 9, 8]
+		Search : 4
+		Return true or false
++ Binary
+
+3/Practice for Recursive - Will upload later
+
+4/Modify your previous sorting problems
+
+PRIME NUMBER IMPROVEMENT
+private static bool IsPrimeNumber(int givenNumber)
+{
+	Stopwatch sw = Stopwatch.StartNew();
+
+	int counter = 0;
+
+	for (int i = 2; i <= Math.Sqrt(givenNumber) + 1; i++)
+	{
+		if (givenNumber % i == 0)
+			counter = 1;
+	}
+
+	Console.WriteLine("Took " + sw.ElapsedMilliseconds);
+
+	if (counter == 0 && givenNumber != 1 && givenNumber != 0)
+		return true;
+
+	return false;
+}
