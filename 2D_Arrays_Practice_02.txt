@@ -50,6 +50,42 @@ Output:
 3 9
 4 5
 
+//using System;
+
+//namespace C_Sharp_Compiler
+//{
+//    class Program
+//    {
+//        public static void Main(string[] args)
+//        {
+//            Console.WriteLine("Enter size of array and number of operations separated by space: ");
+//            string input = Console.ReadLine();
+
+//            while (input != string.Empty)
+//            {
+//                string [] inputarray = input.Split(' ');
+
+//                int arraysize = int.Parse(inputarray[0]);
+//                int numops = int.Parse(inputarray[1]);
+
+//                int[][] queries = new int[numops][];
+
+//                for (int i = 0; i < numops; i++)
+//                    queries[i] = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+
+//                Console.WriteLine(arrayManipulation(arraysize, queries));
+//                Console.WriteLine("Enter size of array and number of operations separated by space: ");
+//                input = Console.ReadLine();
+//            }
+//        }
+//    }
+
+//    public static long arrayManipulation (int arraysize, int[][] queries)
+//    {
+
+//    }
+//}
+
 using System;
 
 namespace C_Sharp_Compiler
@@ -66,25 +102,18 @@ namespace C_Sharp_Compiler
                 new int[] {0, 5}
             };
 
-            int[] sortedarray = new int[] { 0, 0, 0, 0 };
-            
-
-            for (int column = 0; column < a.Length; column++)
+            for (int row = 0; row < a.Length-1; row++)
             {
+                if (a[row][0] > a[row+1][0])
                 {
-                    sortedarray[column] = a[column][0];
+                    int temp = a[row][0];
+                    a[row][0] = a[row + 1][0];
+                    a[row + 1][0] = temp;
                 }
             }
 
-            for (int column = 0; column < sortedarray.Length; column++)
-            {
-                Array.Sort(sortedarray);
-                {
-                    Console.Write("{0} ", sortedarray[column]);
-                }
-                Console.WriteLine();
-
-            }
+            for (int row = 0; row < a.Length; row++)
+                Console.WriteLine($"{a[row][0]}");
         }
     }
 }
