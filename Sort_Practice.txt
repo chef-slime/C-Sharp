@@ -1,0 +1,13 @@
+1/ Given an array (list). Split and sort odd number and even number follow an example.
+Example:
+[ 5, 12, 6, 11, 9, 7, 4]
+
+Output: 2 arrays (lists)
+[ 4, 6, 12 ]
+[ 11, 9, 7, 5]
+
+p/s: DO NOT USE Build-in Sort function
+
+2/ Given an array, find the second smallest and the second largest
+Example: [ 8, 19, 21, 6, 17, 11, 34, 87, 2, 18]
+Output: 6 and 34
