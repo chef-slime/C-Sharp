@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<int> myList = new List<int>() {
+                952464869,
+                952464863,
+                952464865
+            };
+
+            Stopwatch swOther = Stopwatch.StartNew();
+            foreach (var number in myList)
+            {
+                Console.WriteLine($"{number}-{IsPrimeNumber(number)}");
+            }
+            Console.WriteLine(swOther.ElapsedMilliseconds);
+
+
+            Stopwatch sw = Stopwatch.StartNew();
+
+            Task[] tasks = new Task[3];
+    
+            tasks[0] = Task.Factory.StartNew(() => Console.WriteLine($"1st - {myList[0]}-{IsPrimeNumber(myList[0])}"));
+            tasks[1] = Task.Factory.StartNew(() => Console.WriteLine($"2nd - {myList[1]}-{IsPrimeNumber(myList[1])}"));
+            tasks[2] = Task.Factory.StartNew(() => Console.WriteLine($"3rd - {myList[2]}-{IsPrimeNumber(myList[2])}"));
+
+            Task.Factory.ContinueWhenAll(tasks, completedTasks => {
+                Console.WriteLine("Completed computing.");
+                Console.WriteLine(sw.ElapsedMilliseconds);
+            });
+
+            Console.ReadKey();
+        }
+
+        private static bool IsPrimeNumber(int givenNumber)
+        {
+            int counter = 0;
+
+            for (int i = 2; i <= givenNumber/2; i++)
+            {
+                if (givenNumber % i == 0)
+                    counter = 1;
+            }
+
+            if (counter == 0 && givenNumber != 1 && givenNumber != 0)
+                return true;
+
+            return false;
+        }
+
+    }
+}
