@@ -8,6 +8,62 @@ Output: 2 arrays (lists)
 
 p/s: DO NOT USE Build-in Sort function
 
+using System;
+using System.Collections.Generic;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<int> numbers = new List<int> { 5, 12, 6, 11, 9, 7, 4 };
+
+            List<int> even = new List<int>();
+            List<int> odd = new List<int>();
+
+            foreach (int element in numbers)
+            {
+                if (element % 2 == 0)
+                    even.Add(element);
+                else
+                    odd.Add(element);
+            }
+
+            for (int p = 0; p < even.Count - 1; p++)
+            {
+                for (int i = 0; i < even.Count - 1; i++)
+                {
+                    if (even[i] > even[i + 1])
+                    {
+                        int temp = even[i];
+                        even[i] = even[i + 1];
+                        even[i + 1] = temp;
+                    }
+                }
+            }
+            for (int p = 0; p < odd.Count - 1; p++)
+            {
+                for (int i = 0; i < odd.Count - 1; i++)
+                {
+                    if (odd[i] > odd[i + 1])
+                    {
+                        int temp = odd[i];
+                        odd[i] = odd[i + 1];
+                        odd[i + 1] = temp;
+                    }
+                }
+            }
+
+            foreach (int element in even)
+                Console.Write($"{element} ");
+            Console.WriteLine();
+            foreach (int element in odd)
+                Console.Write($"{element} ");
+        }
+    }
+}
+
 2/ Given an array, find the second smallest and the second largest
 Example: [ 8, 19, 21, 6, 17, 11, 34, 87, 2, 18]
 Output: 6 and 34
