@@ -80,6 +80,49 @@ namespace C_Sharp_Compiler
 
 + Binary
 
+using System;
+using System.Collections.Generic;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("What number are you looking for? ");
+
+            int desirednum = int.Parse(Console.ReadLine());
+
+            List<int> numbers = new List<int> { 2, 6, 4, 9, 8 };
+
+            if (binarySearch(numbers, desirednum) == 0)
+                Console.WriteLine("Number can't be found");
+            else
+                Console.WriteLine($"Number can be found at index {binarySearch(numbers, desirednum)}");
+        }
+
+        public static int binarySearch(List<int> numbers, int desirednum)
+        {
+            int min = 0;
+            int max = numbers.Count - 1;
+            while (min <= max)
+            {
+                int midpoint = (min + max) / 2;
+
+                if (desirednum == numbers[midpoint])
+                    return midpoint;
+
+                else if (desirednum > numbers[midpoint])
+                    min++;
+
+                else
+                    max--;
+            }
+            return 0;
+        }
+    }
+}
+
 4/Modify your previous sorting problems
 
 PRIME NUMBER IMPROVEMENT
