@@ -67,3 +67,35 @@ namespace C_Sharp_Compiler
 2/ Given an array, find the second smallest and the second largest
 Example: [ 8, 19, 21, 6, 17, 11, 34, 87, 2, 18]
 Output: 6 and 34
+
+using System;
+using System.Collections.Generic;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<int> numbers = new List<int> { 8, 19, 21, 6, 17, 11, 34, 87, 2, 18 };
+
+            for (int p = 0; p < numbers.Count - 1; p++)
+            {
+                for (int i = 0; i < numbers.Count - 1; i++)
+                {
+                    if (numbers[i] > numbers[i + 1])
+                    {
+                        int temp = numbers[i];
+                        numbers[i] = numbers[i + 1];
+                        numbers[i + 1] = temp;
+                    }
+                }
+            }
+
+            
+            Console.WriteLine($"{numbers[1]}");
+            Console.WriteLine($"{numbers[numbers.Count - 2]}");
+
+        }
+    }
+}
