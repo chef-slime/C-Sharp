@@ -1,0 +1,9 @@
+Given a list of numbers (large number is better around 952464865).
+Compute and print out total divisible number for each element.
+
+Example: 
+[ 50, 22 ]
+
+Output:
+50 has total 5 divisible numbers
+22 has total 3 divisible numbers
