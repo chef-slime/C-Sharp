@@ -7,3 +7,36 @@ Example:
 Output:
 50 has total 5 divisible numbers
 22 has total 3 divisible numbers
+
+using System;
+using System.Collections.Generic;
+using System.Threading;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Thread divisibilityThr = new Thread(Divisibility);
+            divisibilityThr.Start();
+        }
+
+        public static void Divisibility ()
+        {
+            List<int> numbers = new List<int>() { 952464865, 917303614 };
+
+            foreach (int element in numbers)
+            {
+                int counter = 0;
+                for (int i = 1; i <= element; i++)
+                {
+                    if (element % i == 0)
+                        counter++;
+                }
+
+                Console.WriteLine($"{element} has {counter} divisible numbers");
+            }
+        }
+    }
+}
