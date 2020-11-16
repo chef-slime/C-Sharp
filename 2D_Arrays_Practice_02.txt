@@ -185,12 +185,8 @@ namespace C_Sharp_Compiler
                 {
                     int counter = 0;
 
-                    /* Loop begins at 2 because all numbers are divisible by 1
-                     * Loop does not need to repeat itself a[row][column] of times
-                     * because if the number is composite, it will be divisible by
-                     * smaller integers and can be "broken down" in a factor tree more than once
-                     */
-                    for (int i = 2; i <= a[row][column]/2; i++)
+                    // Loop begins at 2 because all numbers are divisible by 1
+                    for (int i = 2; i <= Math.Sqrt(a[row][column]) + 1; i++)
                     {
                         if (a[row][column] % i == 0)
                             counter = 1;
