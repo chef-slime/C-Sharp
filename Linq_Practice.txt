@@ -5,6 +5,29 @@ Given Range 1,8
 The numbers within the range of 1 to 8 are :
 1 5 7 4
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<int> numbers = new List<int> { 1, 10, 5, 7, 9, 4 };
+
+            IEnumerable<int> query =
+                from eachNumber in numbers
+                where eachNumber >= 1 && eachNumber <= 8
+                select eachNumber;
+            foreach(int i in query)
+            {
+                Console.Write(i + " ");
+            }
+        }
+    }  
+}
 
 2/ Write a program in C# Sharp to display the number and frequency of number from giving array.
 Input: { 5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2 }
@@ -29,6 +52,31 @@ var n = from x in arr1
 
 P/S: 2, 3, 4 use GROUP BY.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<int> numbers = new List<int> 
+            { 5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2 };
+
+            var query =
+                from eachNumber in numbers
+                group eachNumber by eachNumber into counter
+                select counter;
+
+            foreach (var element in n)
+                Console.WriteLine("Number " + element.Key + " appears " + element.Count() + " times");
+
+        }
+    }  
+}
+
 
 3/  Write a program in C# Sharp to display the characters and frequency of character from giving string. Go to the editor
 Test Data:
@@ -41,6 +89,28 @@ Character p: 2 times
 Character l: 1 times
 Character e: 1 times
 
+using System;
+using System.Linq;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input = "apple";
+
+            var query =
+                from eachCharacter in input
+                group eachCharacter by eachCharacter into counter
+                select counter;
+
+            foreach (var counter in n)
+                Console.WriteLine("Number " + counter.Key + " appears " + counter.Count() + " times");
+
+        }
+    }  
+}
 
 4/ Write a program in C# Program to Count File Extensions and Group it using LINQ.
 Test Data :
@@ -57,6 +127,30 @@ Here is the group of extension of the files :
 1 File(s) with .frt Extension
 1 File(s) with .xml Extension
 
+using System;
+using System.Linq;
+using System.IO;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string[] files = { "aaa.frx", "bbb.TXT", "xyz.dbf", "abc.pdf", "aaaa.PDF", "xyz.frt", "abc.xml", "ccc.txt", "zzz.txt" };
+
+            var query =
+                from eachFile in files
+                group eachFile by Path.GetExtension(eachFile).ToLower() into fileGroup
+                orderby fileGroup.Key
+                select fileGroup;
+
+            foreach (var fileGroup in query)
+                Console.WriteLine(fileGroup.Count() + " files with " + fileGroup.Key + " extension");
+
+        }
+    }  
+}
 
 5/iven a list of string, Write a program in C# Sharp to find the string which starts and ends with a specific character
 Input: 'ROME','LONDON','NAIROBI','CALIFORNIA','ZURICH','NEW DELHI','AMSTERDAM','ABU DHABI','PARIS'
