@@ -1,0 +1,105 @@
+class CompareLists
+{
+    static void Main()
+    {
+        // Create the IEnumerable data sources.  
+        string[] names1 = new string[3] { "Tina", "Fabricio", "Toyoshima" };
+        string[] names2 = new string[2] { "Tina", "Fabricio" };
+
+        // Create the query. Note that method syntax must be used here.  
+        IEnumerable<string> differenceQuery = names1.Except(names2);
+
+        foreach (string s in differenceQuery)
+            Console.WriteLine(s);
+
+        // Keep the console window open in debug mode.  
+        Console.WriteLine("Press any key to exit");
+        Console.ReadKey();
+    }
+}
+
+class LINQQueryExpressions
+{
+    static void Main()
+    {
+
+        // Specify the data source.
+        int[] scores = new int[] { 97, 92, 81, 60 };
+
+        // Define the query expression.
+        IEnumerable<int> scoreQuery =
+            from eachScore in scores
+            where eachScore > 80
+            select eachScore;
+
+        // Execute the query.
+        foreach (int i in scoreQuery)
+        {
+            Console.Write(i + " ");
+        }
+    }
+}
+
+
+namespace NonGenericLINQ
+{
+    public class Student
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int[] Scores { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList arrList = new ArrayList();
+            arrList.Add(
+                new Student
+                {
+                    FirstName = "Svetlana",
+                    LastName = "Omelchenko",
+                    Scores = new int[] { 98, 92, 81, 60 }
+                });
+            arrList.Add(
+                new Student
+                {
+                    FirstName = "Claire",
+                    LastName = "O’Donnell",
+                    Scores = new int[] { 75, 84, 91, 39 }
+                });
+            arrList.Add(
+                new Student
+                {
+                    FirstName = "Sven",
+                    LastName = "Mortensen",
+                    Scores = new int[] { 88, 94, 65, 91 }
+                });
+            arrList.Add(
+                new Student
+                {
+                    FirstName = "Cesar",
+                    LastName = "Garcia",
+                    Scores = new int[] { 97, 89, 85, 82 }
+                });
+
+            var query = from Student student in arrList
+                        where student.Scores[0] > 70
+                        orderby student.LastName
+                        select student;
+
+            foreach (Student s in query)
+                Console.WriteLine(s.LastName + ": " + s.Scores[0]);
+
+            // Keep the console window open in debug mode.  
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+        }
+    }
+}
+
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/linq-and-strings
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/how-to-add-custom-methods-for-linq-queries
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/how-to-query-an-arraylist-with-linq
