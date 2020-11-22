@@ -1,16 +1,6 @@
-Given a list of numbers (large number is better around 952464865).
-Compute and print out total divisible number for each element.
-
-Example: 
-[ 50, 22 ]
-
-Output:
-50 has total 5 divisible numbers
-22 has total 3 divisible numbers
-
 using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace C_Sharp_Compiler
 {
@@ -18,25 +8,28 @@ namespace C_Sharp_Compiler
     {
         public static void Main(string[] args)
         {
-            Thread divisibilityThr = new Thread(Divisibility);
-            divisibilityThr.Start();
+            List<int> numbers = new List<int>() { 952464865, 917303614 };
+            Task[] tasks = new Task[3];
+
+            /* => is a lambda operator used in LAMBDA expressions which says ""given something, return something" 
+            or "given x, do something with x" */
+            tasks[0] = Task.Factory.StartNew(() => Divisibility(numbers[0]));
+            tasks[1] = Task.Factory.StartNew(() => Divisibility(numbers[1]));
+
+            // Why is this necessary for threads to run?
+            Console.ReadKey();
         }
 
-        public static void Divisibility ()
+        private static void Divisibility(int number)
         {
-            List<int> numbers = new List<int>() { 952464865, 917303614 };
-
-            foreach (int element in numbers)
+            int counter = 0;
+            for (int i = 1; i <= number; i++)
             {
-                int counter = 0;
-                for (int i = 1; i <= element; i++)
-                {
-                    if (element % i == 0)
-                        counter++;
-                }
-
-                Console.WriteLine($"{element} has {counter} divisible numbers");
+                if (number % i == 0)
+                    counter++;
             }
+
+            Console.WriteLine($"{number} has {counter} divisible numbers");
         }
     }
 }
