@@ -139,12 +139,16 @@ namespace CSharpCompiler
         {
             string[] files = { "aaa.frx", "bbb.TXT", "xyz.dbf", "abc.pdf", "aaaa.PDF", "xyz.frt", "abc.xml", "ccc.txt", "zzz.txt" };
 
+            // query stores groups
             var query =
                 from eachFile in files
+
+                // fileGroup is a group that stores elements sharing a common attribute
                 group eachFile by Path.GetExtension(eachFile).ToLower() into fileGroup
+                // key value is the parameter the groups are created based on
                 orderby fileGroup.Key
                 select fileGroup;
-
+            // array of arrays?
             foreach (var fileGroup in query)
                 Console.WriteLine(fileGroup.Count() + " files with " + fileGroup.Key + " extension");
 
@@ -160,6 +164,28 @@ Input ending character for the string : M
 Expected Output :
 The city starting with A and ending with M is : AMSTERDAM
 
+using System;
+using System.Linq;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string[] cities = { "ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS" };
+
+            var query =
+                from eachCity in cities
+                where eachCity.ToLower().StartsWith('a') && eachCity.ToLower().EndsWith('m')
+                select eachCity;
+            // array of arrays?
+            foreach (string city in query)
+                Console.WriteLine($"The city starting with A and ending with M is: {city}");
+
+        }
+    }  
+}
 
 
 6/ Write a program in C# Sharp to Accept the members of a list through the keyboard and display the members more than a specific value.
@@ -177,3 +203,39 @@ Expected Output :
 The numbers greater than 59 are :
 94
 63
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.Write("Input the number of members on the list: ");
+            int condition = int.Parse(Console.ReadLine());
+
+            List<int> members = new List<int>();
+
+            for (int i = 0; i < condition; i++)
+            {
+                Console.Write($"Member {i}: ");
+                members.Add(int.Parse(Console.ReadLine()));
+            }
+
+            Console.Write("Input the value above you want to display the members of the list: ");
+            int greaterthanValue = int.Parse(Console.ReadLine());
+
+            var query =
+                from eachMember in members
+                where eachMember > greaterthanValue
+                select eachMember;
+
+            Console.WriteLine($"\nThe numbers greater than {greaterthanValue} are: ");
+            foreach (int element in query)
+                Console.WriteLine(element);
+        }
+    }  
+}
