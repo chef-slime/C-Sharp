@@ -39,7 +39,7 @@ AMSTERDAM
 NEW DELHI
 CALIFORNIA
 
-5/ Write a program in C# Sharp to arrange the distinct elements in the list in ascending order
+5/ Write a program in C# Sharp to arrange the distinct elements in the list in ascending order: Hit - use distinct linq
 Example: { Brade, Biscuit, Butter, Honey, Brade, Biscuit }
 Expected Output :
 Biscuit
