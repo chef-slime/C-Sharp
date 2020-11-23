@@ -7,11 +7,58 @@ Output:
 “hello”
 “hi”
 
+using System.Collections.Generic;
+using System.Linq;
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<string> phrases1 = new List<string>() 
+            { "hello", "hi", "good evening", "good day", "good morning", "goodbye" };
+
+            List<string> phrases2 = new List<string>() { "whatsup", "how are you", "hello", "bye", "hi"};
+
+            // Intersect is a method that gets common elements from 2 collections
+            var result = phrases1.Intersect(phrases2);
+
+            foreach (var element in result)
+                Console.WriteLine(element);
+        }
+    }
+}
+
 2/ Joining unique values from two sequences using the LINQ: Hit: use Union operator
 
 string[] first = new string[] {"hello", "hi", "good evening", "good day", "good morning", "goodbye" };
 string[] second = new string[] {"whatsup", "how are you", "hello", "bye", "hi"};
 
+using System.Collections.Generic;
+using System.Linq;
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<string> phrases1 = new List<string>() 
+            { "hello", "hi", "good evening", "good day", "good morning", "goodbye" };
+
+            List<string> phrases2 = new List<string>() { "whatsup", "how are you", "hello", "bye", "hi"};
+
+            // Union is a method that merges collections
+            var result = phrases1.Union(phrases2);
+
+            foreach (var element in result)
+                Console.WriteLine(element);
+        }
+    }
+}
 
 3/ Write a program in C# Sharp to find the strings for a specific minimum length.
 Example:
