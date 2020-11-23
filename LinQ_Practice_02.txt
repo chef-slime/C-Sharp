@@ -1,0 +1,54 @@
+1/ Joining common values from two sequences using the LINQ. Hit: use Intersect operator
+Example: 
+{"hello", "hi", "good evening", "good day", "good morning", "goodbye" }
+{"whatsup", "how are you", "hello", "bye", "hi"}
+
+Output: 
+“hello”
+“hi”
+
+2/ Joining unique values from two sequences using the LINQ: Hit: use Union operator
+
+string[] first = new string[] {"hello", "hi", "good evening", "good day", "good morning", "goodbye" };
+string[] second = new string[] {"whatsup", "how are you", "hello", "bye", "hi"};
+
+
+3/ Write a program in C# Sharp to find the strings for a specific minimum length.
+Example:
+Input number of strings to store in the array :4
+Input 4 strings for the array:
+Element[0] : this
+Element[1] : is
+Element[2] : a
+Element[3] : string
+Input the minimum length of the item you want to find : 5
+Expected Output:
+The items of minimum 5 characters are :
+Item: string
+
+4/ Write a program in C# Sharp to display the list of items in the array according to the length of the string then by name in ascending order.
+Expected Output :
+Here is the arranged list :
+ROME
+PARIS
+LONDON
+ZURICH
+NAIROBI
+ABU DHABI
+AMSTERDAM
+NEW DELHI
+CALIFORNIA
+
+5/ Write a program in C# Sharp to arrange the distinct elements in the list in ascending order
+Example: { Brade, Biscuit, Butter, Honey, Brade, Biscuit }
+Expected Output :
+Biscuit
+Brade
+Butter
+Honey
+
+6/ https://www.tutorialsteacher.com/online-test/linq-test
+
+NOTE: 
++ Linq apply for C#, Visual basic language
++ All the collections want to use LinQ must implement/inherit IQueryable 
