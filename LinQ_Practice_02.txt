@@ -158,6 +158,28 @@ Brade
 Butter
 Honey
 
+using System.Collections.Generic;
+using System.Linq;
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<string> strings = new List<string>()
+            { "Brade", "Biscuit", "Butter", "Honey", "Brade", "Biscuit" };
+
+            var query = strings.Distinct();
+
+            foreach (var element in query)
+                Console.WriteLine(element);
+                
+            
+        }
+    }
+}
 6/ https://www.tutorialsteacher.com/online-test/linq-test
 
 NOTE: 
