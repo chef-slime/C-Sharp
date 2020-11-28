@@ -1,0 +1,12 @@
+https://www.w3schools.com/html/default.asp
+
+Go over those and Try Edit the code or content to understand how it works.
+
+html_colors
+html_styles + html_css
+html_formatting
+html_quotation_elements
+html_tables
+html_lists
+html_symbols
+html_emojis
