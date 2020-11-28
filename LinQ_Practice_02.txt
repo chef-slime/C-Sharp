@@ -171,12 +171,12 @@ namespace C_Sharp_Compiler
             List<string> strings = new List<string>()
             { "Brade", "Biscuit", "Butter", "Honey", "Brade", "Biscuit" };
 
-            var query = strings.Distinct();
+            var query = strings.Distinct().OrderBy(eachString => eachString);
 
             foreach (var element in query)
                 Console.WriteLine(element);
-                
-            
+
+
         }
     }
 }
