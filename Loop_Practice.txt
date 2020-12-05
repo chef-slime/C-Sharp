@@ -4,15 +4,95 @@
  3 3 3
 4 4 4 4
 
+using System;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.Write("Enter a number: ");
+            int input = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i <= input; i++)
+            {
+                for (int j = input - i; j > 0; j--)
+                    Console.Write(" ");
+                for (int j = 1; j <= i; j++)
+                    Console.Write($"{i} ");
+                Console.Write("\n");
+            }
+           
+        }
+    }
+}
+
 2/ Write a program in C# Sharp to display the number in reverse order. (NUMBER not STRING)
 Test Data :
 Input a number: 12345
 Expected Output :
 The number in reverse order is : 54321
 
+using System;
+using System.Collections.Generic;
+
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.Write("Enter a number: ");
+            string input = Console.ReadLine();
+
+            List<int> numbers = new List<int>();
+
+            foreach (char character in input)
+                numbers.Add(character-'0');
+
+            for (int i = numbers.Count-1; i >= 0; i--)
+            {
+                Console.Write(numbers[i]);
+            }
+           
+        }
+    }
+}
+
 3/ Write a program in C# Sharp to convert a decimal number into binary
 Test Data :
 Enter a number to convert : 25
 Expected Output :
 The Binary of 25 is 11001.
+using System;
+using System.Collections.Generic;
 
+namespace C_Sharp_Compiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.Write("Enter a number: ");
+            int input = int.Parse(Console.ReadLine());
+
+            List<int> remainders = new List<int>();
+
+            int quotient = input / 2;
+            int remainder = input % 2;
+            remainders.Add(remainder);
+
+            while (quotient != 0)
+            {
+                remainder = quotient % 2;
+                remainders.Add(remainder);
+                quotient = quotient / 2;
+
+            }
+
+            for (int i = remainders.Count - 1; i >= 0; i--)
+                Console.Write($"{remainders[i]}");
+        }
+    }
+}
