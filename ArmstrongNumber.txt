@@ -8,6 +8,23 @@ For example:
 154 is not an Armstrong number, because: 154 != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190
 Write some code to determine whether a number is an Armstrong number.
 
+
+
+// TODO: this is a method signal, complete without using other data structures: char, string, array, list...
+public static bool IsArmstrong(int inputNumber)
+{
+            return true;
+}
+
+
+
+
+
+
+
+
+
+
 using System;
 
 namespace C_Sharp_Compiler
