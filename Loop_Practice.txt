@@ -34,6 +34,21 @@ Input a number: 12345
 Expected Output :
 The number in reverse order is : 54321
 
+
+
+
+// TODO: implement this method without using others: char, string, array, list
+public statis int ReserseNumber(int inputNumber)
+{
+    return resersedNumber;
+}
+
+
+
+
+
+
+
 using System;
 using System.Collections.Generic;
 
