@@ -8,23 +8,6 @@ For example:
 154 is not an Armstrong number, because: 154 != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190
 Write some code to determine whether a number is an Armstrong number.
 
-
-
-// TODO: this is a method signal, complete without using other data structures: char, string, array, list...
-public static bool IsArmstrong(int inputNumber)
-{
-            return true;
-}
-
-
-
-
-
-
-
-
-
-
 using System;
 
 namespace C_Sharp_Compiler
@@ -33,29 +16,52 @@ namespace C_Sharp_Compiler
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter a number: ");
+            Console.Write("Enter a number: ");
             string input = Console.ReadLine();
-            
+
             while (input != string.Empty)
             {
-                int numdigits = input.Length;
-                double sum = 0;
+                int number = int.Parse(input);
 
-                for (int i = 0; i < numdigits; i++)
-                {
-                    int number = input[i] - '0';
+                Console.WriteLine(isArmstrong(number));
 
-                    sum += Math.Pow(number, numdigits);
-                }
-
-                if (sum == int.Parse(input))
-                    Console.WriteLine($"{input} is an Armstrong number");
-                else
-                    Console.WriteLine($"{input} is not an Armstrong number");
-
-                Console.WriteLine("Enter a number: ");
+                Console.Write("Enter a number: ");
                 input = Console.ReadLine();
             }
+        }
+
+        public static bool isArmstrong(int number)
+        {
+            int quotient = number / 10;
+
+            int numdigits = 1;
+
+            while (quotient >= 1)
+            {
+                numdigits++;
+                quotient = quotient / 10;
+            }
+
+            double sum = 0;
+
+            quotient = number / 10;
+
+            int remainder = number % 10;
+
+            for (int i = numdigits; i > 0; i--)
+            {
+                sum += Math.Pow(remainder, numdigits);
+
+                remainder = quotient % 10;
+
+                quotient = quotient / 10;
+            }
+
+            if (sum == number)
+                return true;
+
+            else
+                return false;
         }
     }
 }
