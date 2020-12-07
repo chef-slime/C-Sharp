@@ -33,22 +33,6 @@ Test Data :
 Input a number: 12345
 Expected Output :
 The number in reverse order is : 54321
-
-
-
-
-// TODO: implement this method without using others: char, string, array, list
-public statis int ReserseNumber(int inputNumber)
-{
-    return resersedNumber;
-}
-
-
-
-
-
-
-
 using System;
 using System.Collections.Generic;
 
@@ -61,16 +45,44 @@ namespace C_Sharp_Compiler
             Console.Write("Enter a number: ");
             string input = Console.ReadLine();
 
-            List<int> numbers = new List<int>();
-
-            foreach (char character in input)
-                numbers.Add(character-'0');
-
-            for (int i = numbers.Count-1; i >= 0; i--)
+            while (input != string.Empty)
             {
-                Console.Write(numbers[i]);
+                int number = int.Parse(input);
+
+                Console.WriteLine(reverseNumber(number));
+
+                Console.WriteLine("Enter a number: ");
+                input = Console.ReadLine();
             }
-           
+        }
+
+        public static double reverseNumber (int number)
+        {
+            int numdigits = 1;
+
+            int quotient = number / 10;
+            
+            while (quotient >= 1)
+            {
+                numdigits++;
+                quotient = quotient / 10;
+            }
+
+            quotient = number / 10;
+            int remainder = number % 10;
+
+            double result = 0;
+
+            for (int i = numdigits; i > 0; i--)
+            {
+                result += remainder * Math.Pow(10, i-1);
+
+                remainder = quotient % 10;
+
+                quotient = quotient / 10;
+            }
+
+            return result;
         }
     }
 }
