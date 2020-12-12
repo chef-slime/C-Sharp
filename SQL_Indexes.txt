@@ -1,0 +1,31 @@
+ID	Name	Salary
+1	Tina	20000
+2	Annie	15000
+
+CREATE INDEX idx_name
+ON Persons (Name);
+
+Database -> Create some kinds of sub-table/sub-set of data
+
+Annie	Physical/Memory Address of Anna record
+Tina	1
+
+
+Search: Anna
+
+
+
+SELECT * FROM Persons 
+WHERE NAME = 'Anna';
+
+1/ Look up 'Anna' in the index sub-table/sub-set
+2/ It will get the ID
+3/ It will go back to the Person Table and get the record for that found ID
+	-> 2	Anna	15000
+
+
+Note: Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.
+
+
+clustered vs non-clustered indexes?
+
