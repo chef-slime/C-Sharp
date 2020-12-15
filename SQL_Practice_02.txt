@@ -1,0 +1,25 @@
+1/ Create those tables
+
+Populations
+(
+	SSN,
+	StreetAddress,
+	DoB,
+	StateId (FK from States.Id)
+)
+
+States
+{
+	Id,
+	Name,
+	Latitude,
+	Meridian,
+}
+
+2/ Insert data into States and Populations tables.
+
+
+3/ Write queries:
+ + Count how many people are living in Florida
+ + Report how many people are living in New Jersey
+ + Which state has the most people
