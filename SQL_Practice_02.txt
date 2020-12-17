@@ -19,7 +19,37 @@ States
 2/ Insert data into States and Populations tables.
 
 
+
 3/ Write queries:
  + Count how many people are living in Florida
  + Report how many people are living in New Jersey
  + Which state has the most people
+ 
+ Create Table Populations
+(
+    SSN int PRIMARY KEY,
+    StreetAddress varchar(255),
+    DoB varchar(255),
+	StateId int,
+    Foreign Key (StateId) References States (Id)
+);
+Create Table States
+(
+	Id int,
+	Name varchar(255),
+	Latitude varchar(255),
+	Longitude varchar(255),
+    Primary Key (Id)
+);
+
+Insert Into Populations
+Values 
+(904818, "305 - 14th Ave. S. Suite 3B", "01/01/1982", 113147),
+(874723, "Keskuskatu 45", "02/14/2001", 574018),
+(064024, "Skagen 21", "06/27/1990", 888571);
+
+Insert Into States
+Values 
+(113147, "Florida", "47.7511° N", "120.7401° W"),
+(574018, "New Jersey", "43.8041° N", "120.5542° W"),
+(888571, "New Jersey", "43.1939° N", "71.5724° W");
