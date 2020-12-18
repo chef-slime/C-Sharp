@@ -25,7 +25,7 @@ States
  + Report how many people are living in New Jersey
  + Which state has the most people
  
- Create Table Populations
+Create Table Populations
 (
     SSN int PRIMARY KEY,
     StreetAddress varchar(255),
@@ -45,11 +45,21 @@ Create Table States
 Insert Into Populations
 Values 
 (904818, "305 - 14th Ave. S. Suite 3B", "01/01/1982", 113147),
+(430751, "26 Bishop Dr.", "04/18/1996", 113147),
+(292323, "2887 Pennsylvania Avenue", "12/25/2002", 574018),
 (874723, "Keskuskatu 45", "02/14/2001", 574018),
 (064024, "Skagen 21", "06/27/1990", 574018);
 
 Insert Into States
 Values 
 (113147, "Florida", "47.7511° N", "120.7401° W"),
-(574018, "New Jersey", "43.8041° N", "120.5542° W"),
 (574018, "New Jersey", "43.8041° N", "120.5542° W");
+
+SELECT Name
+From States
+Where Id = 
+(Select StateId 
+From Populations 
+Group By StateId 
+Order By Count (StateId) Desc);
+-- To Order By Count, data must be aggregated first, which is done by the Group By function
