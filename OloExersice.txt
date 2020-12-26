@@ -1,0 +1,7 @@
+Marie and Diane are considering hosting a graduation party. They are going to cater the event from “Food for Thought Cafe."
+They like a variety of foods, so no item should be ordered more than once.
+Their budget is $300 and want to make sure they have exactly 5 appetizers and 5 desserts, and as many entrees as they can afford.
+
+Using a language in our technical stack, write an app or script that will download the menu directly from menu.json and generate the expected output:
+	+An integer indicating the total number of menu items (appetizers, entrees, and desserts) they can order.
+	+The menu items and their respective prices to order. The list should be grouped by food type and sorted by price in increasing order. Please output food types in the following order: appetizers, entrees, desserts.
