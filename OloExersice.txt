@@ -5,3 +5,135 @@ Their budget is $300 and want to make sure they have exactly 5 appetizers and 5 
 Using a language in our technical stack, write an app or script that will download the menu directly from menu.json and generate the expected output:
 	+An integer indicating the total number of menu items (appetizers, entrees, and desserts) they can order.
 	+The menu items and their respective prices to order. The list should be grouped by food type and sorted by price in increasing order. Please output food types in the following order: appetizers, entrees, desserts.
+	
+using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            
+            Dictionary <string, double> appetizers = new Dictionary<string, double>()
+            {
+                { "Pretzel", 4.95 },
+                { "Edamame", 3.95 },
+                { "Onion Rings", 5.97 },
+                { "French Fries", 6.95 },
+                { "Guacamole and Chips", 6.09},
+                { "Flatbread", 7.65 },
+                { "Fried Zucchini", 7.05},
+                { "Nachos", 2.99 },
+                { "Fried Calamari", 9.85 },
+                { "Chips and Salsa", 3.55 },
+                { "Mozzarella Sticks", 6.00 },
+                { "Buffalo Wings", 8.75 }
+            };
+
+            Dictionary<string, double> entrees = new Dictionary<string, double>()
+            {
+                { "Small Cheese Pizza", 7.95 },
+                { "Philly Roll", 8.95 },
+                { "Fish and Chips", 12.05 },
+                { "Spaghetti and Meatballs", 9.95 },
+                { "Bacon Cheeseburger", 12.95},
+                { "Fettuccine Alfredo", 13.05 },
+                { "Lasagna with Meat Sauce", 15.00 },
+                { "Pasta Carbonara", 11.79 },
+                { "Margherita Pizza", 13.09 },
+                { "Deep-dish Pizza", 16.65 },
+                { "Cioppino", 19.89 },
+                { "Classic Chilli", 6.89 },
+                { "Cuban Sandwich", 9.80 },
+                { "Beef Stroganoff", 12.15 },
+                { "Fried Chicken", 9.90 },
+                { "Slow Cooker Pot Roast", 16.19 },
+                { "Grilled Salon", 17.00 },
+                { "Chicken Marsala", 13.30 },
+                { "Curried Coconut Chicken", 16.89 },
+                { "Biscuits and Gravy", 15.09 },
+                { "Breaded Pork Chops", 19.05 },
+                { "Mandarin Chicken Salad", 18.50 },
+                { "Carnitas Burrito", 8.00 },
+                { "Cheeseburger", 11.06 },
+                { "Chicken and Waffles", 16.60 }
+            };
+
+            Dictionary<string, double> desserts = new Dictionary<string, double>()
+            {
+                { "Ice Cream Scoop", 1.95 },
+                { "Tiramasu", 5.35 },
+                { "Chocolate Mousse", 3.95 },
+                { "Flan", 4.75 },
+                { "Gelato", 4.45},
+                { "Devil's Food Cake", 11.20 },
+                { "Apple Pie", 5.25 },
+                { "Banana Split", 8.49 },
+                { "Crepes", 13.00 },
+                { "Baklava", 10.39 },
+                { "Brownie Sundae", 12.15 },
+                { "Fried Ice Cream", 12.29 }
+            };
+
+          
+            Console.WriteLine("Food for Thought Cafe Menu\n\n        Appetizers\n");
+            
+            foreach (var kvp in appetizers.OrderBy(value => value.Value))
+                Console.WriteLine($"{kvp.Key} : ${string.Format("{0:F2}", kvp.Value)}\n");
+
+            Console.WriteLine("        Desserts\n");
+
+            foreach (var kvp in desserts.OrderBy(value => value.Value))
+                Console.WriteLine($"{kvp.Key} : ${string.Format("{0:F2}", kvp.Value)}\n");
+
+            Console.WriteLine("        Entrees\n");
+            foreach (var kvp in entrees.OrderBy(value => value.Value))
+                Console.WriteLine($"{kvp.Key} : ${string.Format("{0:F2}", kvp.Value)}\n");
+
+            double remainder = 300.00;
+            double total = 0;
+            int counter = 0;
+            Random rand = new Random();
+
+            Console.WriteLine("\n        Appetizers chosen: ");
+            while (counter < 5)
+            {
+                var appetizer = appetizers.ElementAt(rand.Next(0, appetizers.Count));
+                Console.WriteLine($"\n{appetizer.Key} : ${string.Format("{0:F2}", appetizer.Value)}");
+                total += appetizer.Value;
+                appetizers.Remove(appetizer.Key);
+                counter++;
+            }
+
+            counter = 0;
+
+            Console.WriteLine("\n        Desserts chosen: ");
+
+            while (counter < 5)
+            {
+                var dessert = desserts.ElementAt(rand.Next(0, desserts.Count));
+                Console.WriteLine($"\n{dessert.Key} : ${string.Format("{0:F2}", dessert.Value)}");
+                total += dessert.Value;
+                desserts.Remove(dessert.Key);
+                counter++;
+            }
+
+            entrees.OrderBy(value => value.Value);
+            counter = 0;
+
+            Console.WriteLine("\n        Entrees chosen: ");
+            while (total < remainder)
+            {
+                var entree = entrees.ElementAt(counter);
+                Console.WriteLine($"\n{entree.Key} : ${string.Format("{0:F2}", entree.Value)}");
+                total += entree.Value;
+                desserts.Remove(entree.Key);
+                counter++;
+            }
+
+            Console.WriteLine($"\n5 appetizers, {counter} entrees, and 5 desserts were selected.");
+        }
+    }
+}
