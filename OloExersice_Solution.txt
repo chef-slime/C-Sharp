@@ -1,0 +1,132 @@
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace OloExercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var data = ReadData(@"menu.json");
+            double Budget = 300;
+
+            var sortedPriceAppetizers = data.MenuItems.Where(each => each.FoodType == FoodType.Appetizer).OrderBy(each => each.Price).ToList();
+            if (sortedPriceAppetizers.Count < 5)
+            {
+                throw new ArgumentException("At least 5 Appetizers");
+            }
+
+            var sortedPriceDesserts = data.MenuItems.Where(each => each.FoodType == FoodType.Dessert).OrderBy(each => each.Price).ToList();
+            if (sortedPriceDesserts.Count < 5)
+            {
+                throw new ArgumentException("At least 5 Desserts");
+            }
+
+            var sortedEntrees = data.MenuItems.Where(each => each.FoodType == FoodType.Entree).OrderBy(each => each.Price).ToList();
+
+            try
+            {
+                var fiveAppetizersAndFiveDessertsTotalCost = sortedPriceAppetizers.Take(5).Sum(each => each.Price) + sortedPriceDesserts.Take(5).Sum(each => each.Price);
+                var remainBudget = Budget - fiveAppetizersAndFiveDessertsTotalCost;
+
+                if (remainBudget <= 0)
+                {
+                    throw new ArgumentException("Desserts and Appetizers cost too much, there is no bugget for Entrees");
+                }
+
+                int entreeIndex = 0;
+
+                do
+                {
+                    remainBudget = remainBudget - sortedEntrees[entreeIndex].Price;
+
+                    if (remainBudget == 0)
+                    {
+                        break;
+                    }
+
+                    if (remainBudget < 0)
+                    {
+                        entreeIndex--;
+                        break;
+                    }
+
+                    entreeIndex++;
+                }
+                while (true);
+
+                PrintOutput(sortedPriceAppetizers, sortedPriceDesserts, sortedEntrees, entreeIndex);
+            }
+            catch (Exception unknowException)
+            {
+                throw;
+            }
+        }
+
+        static void PrintOutput(List<MenuItem> sortedAppetizers, List<MenuItem> sortedDesserts, List<MenuItem> sortedEntrees, int entreeIndex)
+        {
+            Console.WriteLine("---APPETIZERS---");
+            for (int i = 0; i <= 4; i++)
+            {
+                Console.WriteLine($"{sortedAppetizers[i].Name}----{sortedAppetizers[i].Price}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("---ENTREES---");
+            for (int i = 0; i <= entreeIndex; i++)
+            {
+                Console.WriteLine($"{sortedEntrees[i].Name}----{sortedEntrees[i].Price}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("---DESSERTS---");
+            for (int i = 0; i <= 4; i++)
+            {
+                Console.WriteLine($"{sortedDesserts[i].Name}----{sortedDesserts[i].Price}");
+            }
+        }
+
+        static DataModel ReadData(string fileLocation)
+        {
+            if (string.IsNullOrEmpty(fileLocation))
+            {
+                throw new ArgumentNullException($"{nameof(fileLocation)} is Null or Empty");
+            }
+
+            try
+            {
+                JObject jsonObject = JObject.Parse(File.ReadAllText(fileLocation));
+
+                return jsonObject.ToObject<DataModel>();
+            }
+            catch (Exception unknowException)
+            {
+                throw;
+            }
+        }
+    }
+
+    class DataModel
+    {
+        public string Restaurant { get; set; }
+        public List<MenuItem> MenuItems { get; set; }
+    }
+
+    class MenuItem
+    {
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public FoodType FoodType { get; set; } // This can be string
+    }
+
+    enum FoodType
+    {
+        Other = 0,
+        Appetizer = 1,
+        Dessert = 2,
+        Entree = 3
+    }
+}
