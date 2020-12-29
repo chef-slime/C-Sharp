@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a string: ");
+            string input = Console.ReadLine();
+            while (input != string.Empty)
+            {
+                Console.WriteLine(lowerCase(input));
+                Console.WriteLine("Enter a string: ");
+                input = Console.ReadLine();
+            }
+        }
+
+        private static string lowerCase(string input)
+        {
+            char[] lowercaseletters = new char[input.Length];
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                int ascii = input[i];
+                if (ascii >= 65 && ascii <= 90)
+                {
+                    ascii = ascii + 32;
+                    lowercaseletters[i] = (char)ascii;
+                }
+
+                else
+                    lowercaseletters[i] = input[i];
+            }
+
+            input = new string(lowercaseletters);
+
+            return input;
+        }
+    }
+}
