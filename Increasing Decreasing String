@@ -1,0 +1,96 @@
+using System;
+using System.Collections.Generic;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a string: ");
+            string input = Console.ReadLine();
+            while (input != string.Empty)
+            {
+                Console.WriteLine(SortString(input));
+                Console.WriteLine("Enter a string: ");
+                input = Console.ReadLine();
+            }
+        }
+
+        private static string SortString(string input)
+        {
+            char[] characters = new char [input.Length];
+
+            for (int i = 0; i < input.Length; i++)
+                characters[i] = input[i];
+
+            string newstring = string.Empty;
+
+            // Sort character array
+            for (int p = 0; p < characters.Length - 1; p++)
+            {
+                for (int i = 0; i < characters.Length - 1; i++)
+                {
+                    if (characters[i] > characters[i + 1])
+                    {
+                        (characters[i], characters[i + 1]) = (characters[i + 1], characters[i]);
+                    }
+                }
+            }
+
+            while (characters.Length > 0)
+            {
+                List<char> unusedChar = new List<char>();
+
+                // Null character
+                char previouslyAppendedChar = '\0';
+
+                for (int j = 0; j < characters.Length; j++)
+                {
+                    char currentChar = characters[j];
+
+                    if (previouslyAppendedChar == '\0' || currentChar > previouslyAppendedChar)
+                    {
+
+                        previouslyAppendedChar = currentChar;
+                        newstring += currentChar;
+
+                    }
+
+                    else
+                        unusedChar.Add(currentChar);
+                }
+
+                // Convert unusedChar list to array so that list can be cleared and added to 
+                // & remaining characters can be used in following loop
+                characters = unusedChar.ToArray();
+                // Clear unusedChar list
+                unusedChar.Clear();
+                previouslyAppendedChar = '\0';
+
+                for (int j = characters.Length - 1; j >= 0; j--)
+                {
+                    char currentChar = characters[j];
+
+                    if (previouslyAppendedChar == '\0' || currentChar < previouslyAppendedChar)
+                    {
+
+                        previouslyAppendedChar = currentChar;
+                        newstring += currentChar;
+
+                    }
+
+                    else
+                        unusedChar.Add(currentChar);
+                }
+
+                // Reverse list so that first for loop produces correct results
+                unusedChar.Reverse();
+                characters = unusedChar.ToArray();
+                // No need to clear unusedChar list because when loop repeats, list is "brand new"
+            }
+
+            return newstring;
+        }
+    }
+}
