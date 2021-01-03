@@ -1,0 +1,46 @@
+CREATE TABLE Department
+(
+    dep_id int,
+    dep_name varchar(20),
+    dep_location varchar(15),
+    Primary Key (dep_id)
+);
+
+CREATE TABLE Salary_Grade
+(
+    grade int,
+    min_salary int,
+    max_salary int,
+    Primary Key (grade)
+);
+
+CREATE TABLE Employees
+(
+    emp_id int,
+    emp_name varchar2(15),
+    job_name varchar2(10),
+    manager_id int,
+    hire_date date,
+    salary decimal (10, 2),
+    commission decimal (7,2),
+    Primary Key (emp_id),
+    dep_id int Foreign Key References Department(dep_id)
+);
+
+Insert Into Department
+Values 
+(123, "IT", "Japan"),
+(456, "HR", "Canada"),
+(789, "Culinary", "South Korea");
+
+Insert Into Employees
+Values 
+(3098, "Abraham", "Executive Chef", 1093, 1995-07-11, 62000, 300, 789),
+(1093, "Lidia", "Sous Chef", 3098, 2012-09-04, 57000, 100, 789),
+(6959, "Romana", "HR Supervisor", 1093, 2009-07-17, 70000, 500, 456),
+(6869, "Esther", "HR Representative", 6959, 2021-08-17, 45000, 0, 456),
+(7871, "Nowell", "CTO", 1093, 2005-08-30, 200000, 700, 789),
+(8347, "Bente", "Software Engineer", 7871, 2011-10-07, 180000, 500, 789);
+
+Insert Into Employees(emp_id, emp_name, job_name, hire_date, salary, commission)
+Values(1093, "Edvin", "CEO, 1995-05-01", 1000000, 1000);
