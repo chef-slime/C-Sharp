@@ -14,17 +14,17 @@ CREATE TABLE Salary_Grade
     Primary Key (grade)
 );
 
-CREATE TABLE Employees
+CREATE TABLE Employees_Tina
 (
-    emp_id int,
+    emp_id int PRIMARY KEY,
     emp_name varchar2(15),
     job_name varchar2(10),
     manager_id int,
     hire_date date,
     salary decimal (10, 2),
     commission decimal (7,2),
-    Primary Key (emp_id),
-    dep_id int Foreign Key References Department(dep_id)
+    dep_id int,
+    FOREIGN KEY(dep_id) REFERENCES Department(dep_id)
 );
 
 Insert Into Department
