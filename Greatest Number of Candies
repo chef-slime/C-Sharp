@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter number of candies each child has: ");
+            string input = Console.ReadLine();
+            while (input != string.Empty)
+            {
+                Console.WriteLine("Enter number of extra candies: ");
+                int extraCandies = int.Parse(Console.ReadLine());
+
+                string[] inputarray = input.Split(' ');
+                int[] candies = new int[inputarray.Length];
+
+                for (int i = 0; i < candies.Length; i++)
+                    candies[i] = int.Parse(inputarray[i]);
+
+                foreach (var element in (KidsWithCandies(candies, extraCandies)))
+                    Console.Write(element + " ");
+                Console.WriteLine("\nEnter number of candies each child has: ");
+                input = Console.ReadLine();
+            }
+        }
+
+        private static IList<bool> KidsWithCandies(int[] candies, int extraCandies)
+        {
+            List<bool> distribution = new List<bool>();
+            int max = int.MinValue;
+            for (int i = 0; i < candies.Length; i++)
+            {
+                if (candies[i] > max)
+                    max = candies[i];
+            }
+
+            foreach (var element in candies)
+            {
+                if (element + extraCandies >= max)
+                    distribution.Add(true);
+                else
+                    distribution.Add(false);
+            }
+
+            return distribution;
+        }
+    }
+}
