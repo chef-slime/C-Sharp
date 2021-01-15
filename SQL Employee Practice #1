@@ -1,3 +1,5 @@
+https://www.w3resource.com/sql-exercises/employee-database-exercise/
+
 CREATE TABLE Department
 (
     dep_id int,
@@ -14,7 +16,7 @@ CREATE TABLE Salary_Grade
     Primary Key (grade)
 );
 
-CREATE TABLE Employees_Tina
+CREATE TABLE Employees
 (
     emp_id int PRIMARY KEY,
     emp_name varchar2(15),
@@ -43,4 +45,33 @@ Values
 (8347, "Bente", "Software Engineer", 7871, 2011-10-07, 180000, 500, 789);
 
 Insert Into Employees(emp_id, emp_name, job_name, hire_date, salary, commission)
-Values(1093, "Edvin", "CEO, 1995-05-01", 1000000, 1000);
+Values(4335, "Edvin", "CEO", 1995-05-01, 1000000, 1000);
+
+Select * From Employees;
+
+Select emp_name, salary From Employees;
+
+Select emp_name, job_name From Employees;
+
+SELECT emp_name, ROUND(salary*1.15) as "no.of Dollars" 
+From Employees;
+
+SELECT emp_name || "(" || job_name || ")" as "Employee & Job" 
+From Employees;
+
+SELECT emp_name || "(" || job_name || ")" as "Employee & Job" 
+From Employees
+Where emp_id = 7871;
+
+SELECT emp_name, to_char(hire_date,'MONTH DD,YYYY')
+From Employees;
+
+SELECT emp_name, LENGTH(LTRIM(emp_name))
+From Employees;
+
+SELECT emp_id, salary, commission
+From Employees;
+
+SELECT DISTINCT dep_id, job_name
+From Employees_Tina
+ORDER BY dep_id;
