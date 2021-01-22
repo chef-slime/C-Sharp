@@ -1,0 +1,79 @@
+https://leetcode.com/problems/shuffle-the-array/
+
+using System;
+using System.Collections.Generic;
+
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter numbers separated by space: ");
+            string input = Console.ReadLine();
+            while (input != string.Empty)
+            {
+                Console.WriteLine("Enter total coordinates: ");
+                int total = int.Parse(Console.ReadLine());
+
+                string[] inputarray = input.Split(',');
+                int[] numbers = new int[inputarray.Length];
+
+                for (int i = 0; i < numbers.Length; i++)
+                    numbers[i] = int.Parse(inputarray[i]);
+
+                foreach (var element in Shuffle(numbers, total))
+                    Console.Write(element + " ");
+                Console.WriteLine("\nEnter numbers separated by space: ");
+                input = Console.ReadLine();
+            }
+        }
+
+        private static int[] Shuffle(int[] nums, int n)
+        {
+            int i = 0;
+
+            List<Coordinates> coordinatelist = new List<Coordinates>();
+
+            for (i = 0; i < n; i++)
+            {
+                coordinatelist.Add(new Coordinates(nums[i], nums[i + n]));
+            };
+
+            i = 0;
+
+            foreach (var element in coordinatelist)
+            {
+                Console.WriteLine("x = {0}, y = {1}", element.xvalue, element.yvalue);
+                if (i % 2 == 0)
+                {
+                    nums[i] = element.xvalue;
+                    i++;
+                    nums[i] = element.yvalue;
+                }
+                else
+                {
+                    i++;
+                    nums[i] = element.xvalue;
+                    i++;
+                    nums[i] = element.yvalue;
+                }
+                    
+            }
+
+            return nums;
+        }
+        public class Coordinates
+        {
+            public Coordinates(int _xvalue, int _yvalue)
+            {
+                xvalue = _xvalue;
+                yvalue = _yvalue;
+            }
+
+            public int xvalue { get; set; }
+            public int yvalue { get; set; }
+
+        }
+    }
+}
