@@ -47,30 +47,50 @@ Values
 Insert Into Employees(emp_id, emp_name, job_name, hire_date, salary, commission)
 Values(4335, "Edvin", "CEO", 1995-05-01, 1000000, 1000);
 
+1. Write a query in SQL to display all the information of the employees
+
 Select * From Employees;
+
+2. Write a query in SQL to find the salaries of all employees
 
 Select emp_name, salary From Employees;
 
+3. Write a query in SQL to display the unique designations for the employees
+
 Select emp_name, job_name From Employees;
 
+4. Write a query in SQL to list the emp_name and salary is increased by 15% and expressed as no.of Dollars
 SELECT emp_name, ROUND(salary*1.15) as "no.of Dollars" 
 From Employees;
 
+5. Write a query in SQL to produce the output of employees name and job name as a fromat of "Employee & Job"
+
 SELECT emp_name || "(" || job_name || ")" as "Employee & Job" 
 From Employees;
+
+6. Write a query in SQL to produce the output of employees as follows:
+Employee
+JONAS(manager)
 
 SELECT emp_name || "(" || job_name || ")" as "Employee & Job" 
 From Employees
 Where emp_id = 7871;
 
+7. Write a query in SQL to list the employees with Hire date in the format like February 22, 1991
+
 SELECT emp_name, to_char(hire_date,'MONTH DD,YYYY')
 From Employees;
+
+8. Write a query in SQL to count the no. of characters with out considering the spaces for each name
 
 SELECT emp_name, LENGTH(LTRIM(emp_name))
 From Employees;
 
+9. Write a query in SQL to list the emp_id,salary, and commission of all the employees
 SELECT emp_id, salary, commission
 From Employees;
+
+10. Write a query in SQL to display the unique department with jobs
 
 SELECT DISTINCT dep_id, job_name
 From Employees_Tina
