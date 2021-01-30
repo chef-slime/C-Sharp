@@ -1,0 +1,77 @@
+EXERCISE #1
+
+Given a string called input, find all capital and lowercase Fs and insert a capital K before each
+Ex. input = "force"
+output = "Kforce"
+
+Ex. input = "fluffy"
+output = "KfluKfKfy"
+
+using System;
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter string: ");
+            string input = Console.ReadLine();
+            while (input != string.Empty)
+            {
+                
+                    Console.WriteLine(addKsbeforeFs(input));
+
+                Console.WriteLine("\nEnter string: ");
+                input = Console.ReadLine();
+            }
+        }
+
+        private static string addKsbeforeFs(string input)
+        {
+            string result = "";
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == 'F' || input[i] == 'f')
+                {
+                    result += 'K';
+                }
+                    result += input[i];
+            }
+            return result;
+        }
+    }
+}
+
+EXERCISE #2
+Sample input = 29
+output = 11
+
+Sample input = 34
+output 7
+
+using System;
+namespace CSharpCompiler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter number: ");
+            string input = Console.ReadLine();
+            while (input != string.Empty)
+            {
+                int number = int.Parse(input);
+                Console.WriteLine(Add(number));
+
+                Console.WriteLine("\nEnter number: ");
+                input = Console.ReadLine();
+            }
+        }
+
+        private static int Add(int input)
+        {
+
+            return input/10 + input%10;
+        }
+    }
+}
