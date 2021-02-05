@@ -1,0 +1,24 @@
+private static int TotalMoney(int n)
+{
+  double total = 0;
+  double initialdeposit = 0;
+
+  for (int day = 0; day < n; day++)
+  {
+      if (day % 7 == 0)
+      {
+          initialdeposit = Math.Ceiling((double)(day/7))+1;
+          total += initialdeposit;
+          initialdeposit++;
+      }
+
+      else
+      {
+          total += initialdeposit;
+          initialdeposit++;
+      }
+
+  }
+
+  return (int)total;
+}
