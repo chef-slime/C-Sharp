@@ -1,0 +1,34 @@
+private static bool CheckRecord(string s)
+{
+    int acounter = 0;
+    int lcounter = 0;
+    foreach (char element in s)
+    {
+        if (element == 'A')
+            acounter++;
+    }
+
+    if (acounter > 1)
+    {
+        return false;
+    }
+
+    for (int i = 0; i < s.Length; i++)
+    {
+
+        if (s[i] == 'L')
+        {
+            lcounter++;
+
+            if (lcounter > 2)
+            {
+                return false;
+            }
+        }
+
+        else
+            lcounter = 0;
+
+    }
+    return true;
+}
