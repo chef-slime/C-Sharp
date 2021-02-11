@@ -1,0 +1,4 @@
+Given a number array, find all pairs of number which has sum as a given sum.
+Given [1, 46, 5, 44, 9, 38]
+Given sum = 47
+Output: {1, 46}, {9, 38}
