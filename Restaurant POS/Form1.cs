@@ -14,7 +14,7 @@ namespace Restaurant_POS
             paymentpanel.BorderStyle = BorderStyle.None;
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                    dataGridView1.Columns[column.Index].Width = 100;
+                dataGridView1.Columns[column.Index].Width = 100;
             }
         }
 
@@ -30,7 +30,7 @@ namespace Restaurant_POS
 
         private void AddCost()
         {
-            double tax = 0.06*Cost_of_Item();
+            double tax = 0.06 * Cost_of_Item();
             double total = Cost_of_Item() + tax;
 
             if (dataGridView1.Rows.Count > 0)
@@ -70,14 +70,14 @@ namespace Restaurant_POS
                 MessageBox.Show(ex.Message);
             }
 
-            
+
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             try
             {
-                Font font = new Font ("Times New Roman", 12);
+                Font font = new Font("Times New Roman", 12);
                 SolidBrush drawBrush = new SolidBrush(Color.Black);
                 StringFormat drawFormat = new StringFormat();
                 e.Graphics.DrawImage(bitmap, 0, 0);
@@ -151,7 +151,7 @@ namespace Restaurant_POS
 
         private void paybtn_Click(object sender, EventArgs e)
         {
-            if(paycb.Text == "Cash")
+            if (paycb.Text == "Cash")
             {
                 Change();
             }
@@ -195,7 +195,7 @@ namespace Restaurant_POS
                     row.Cells[1].Value = double.Parse((string)row.Cells[1].Value) * cost;
                 }
             }
-                dataGridView1.Rows.Add("Korokke", "1", cost);
+            dataGridView1.Rows.Add("Korokke", "1", cost);
             AddCost();
 
         }
@@ -490,17 +490,20 @@ namespace Restaurant_POS
 
         private void btnTea_Click(object sender, EventArgs e)
         {
-            double cost = 1;
+            double cost = 0;
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                if ((bool)(row.Cells[0].Value = "Barley Tea"))
+                if (row.Cells[0]?.Value?.ToString() == MenuDataset.Barley_Tea  // Equal to: row.Cells[0] != null && row.Cells[0].Value != null && row.Cells[0].Value..ToString() == "Barley Tea"
+                    && MenuDataset.ItemCost.TryGetValue(MenuDataset.Barley_Tea, out cost))
+
                 {
                     row.Cells[1].Value = double.Parse((string)row.Cells[1].Value + 1);
                     row.Cells[1].Value = double.Parse((string)row.Cells[1].Value) * cost;
                 }
             }
-            dataGridView1.Rows.Add("Barley Tea", "1", cost);
+
+            dataGridView1.Rows.Add(MenuDataset.Barley_Tea, "1", cost);
             AddCost();
         }
     }
